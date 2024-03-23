@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Footer from '../components/Footer';
+import LoginHeader from '../components/LoginHeader'
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -33,7 +35,11 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <>
+
+    <LoginHeader/>
+
+    <div className="flex justify-center items-center">
       <div className="max-w-md w-11/12 bg-gradient-to-r from-blue-800 to-purple-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 " style={{ animation: 'slideInFromLeft 1s ease-out' }}>
         <h2 className="text-center text-4xl font-extrabold text-white" style={{ animation: 'appear 2s ease-out' }}>
           Registro
@@ -129,6 +135,10 @@ const Register = () => {
         </div>
       </div>
     </div>
+
+    <Footer/>
+
+    </>
   );
 };
 

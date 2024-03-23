@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Footer from '../components/Footer';
+import LoginHeader from '../components/LoginHeader'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -36,12 +38,15 @@ const Login = () => {
   };
 
   const redirectToRegister = () => {
-    window.location.href = '/'; 
+    window.location.href = '/register'; 
   };
 
   return (
-    
-    <div className="flex justify-center items-center h-screen">
+    <>
+
+    <LoginHeader/>
+
+    <div className="flex justify-center items-center">
       <div className="max-w-md w-11/12 bg-gradient-to-r from-blue-800 to-purple-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 md:w-4/5" style={{ animation: 'slideInFromLeft 1s ease-out' }}>
         <h2 className="text-center text-4xl font-extrabold text-white -mb-5" style={{ animation: 'appear 2s ease-out' }}>
           Bienvenido
@@ -102,6 +107,9 @@ const Login = () => {
         </div>
       </div>
     </div>
+
+<Footer/>
+</>
   );
 };
 
