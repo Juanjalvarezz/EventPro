@@ -6,6 +6,7 @@ import Dashboard from './Views/Dashboard'
 import AdminPage from './Views/AdminPage'
 import PromotorPage from './Views/PromotorPage'
 import LandingPage from './Views/LandingPage'
+import AdminUsers from './Views/AdminUsers'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/adminDashboard' element={<AdminPage/>} />
         <Route path='/promotor' element={<PromotorPage/>} />
+        <Route path='/adminUsers' element={<AdminUsers/>} />
 
     </Routes>
   </Router>

@@ -80,3 +80,99 @@ exports.login = async (req, res, next) => {
         next(error);
     }
 };
+
+// Eliminar un usuario por ID
+exports.deleteUser = async (req, res, next) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findByIdAndDelete(userId);
+
+        if (!user) {
+            return next(new createError("Usuario no encontrado", 404));
+        }
+
+        res.status(200).json({
+            status: 'Exitoso',
+            message: 'Usuario eliminado correctamente',
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            },
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Editar un usuario por ID
+exports.updateUser = async (req, res, next) => {
+    try {
+        const userId = req.params.id;
+        const { name, email, role } = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(userId, { name, email, role }, { new: true });
+
+        if (!updatedUser) {
+            return next(new createError("Usuario no encontrado", 404));
+        }
+
+        res.status(200).json({
+            status: 'Exitoso',
+            message: 'Usuario actualizado correctamente',
+            user: {
+                _id: updatedUser._id,
+                name: updatedUser.name,
+                email: updatedUser.email,
+                role: updatedUser.role,
+            },
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Obtener todos los usuarios
+exports.getAllUsers = async (req, res, next) => {
+    try {
+        const users = await User.find();
+
+        res.status(200).json({
+            status: 'Exitoso',
+            count: users.length,
+            users: users.map(user => ({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            })),
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Obtener un usuario por ID
+exports.getUserById = async (req, res, next) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return next(new createError("Usuario no encontrado", 404));
+        }
+
+        res.status(200).json({
+            status: 'Exitoso',
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            },
+        });
+    } catch (error) {
+        next(error);
+    }
+};

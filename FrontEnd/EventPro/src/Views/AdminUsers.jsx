@@ -1,19 +1,18 @@
 import React from 'react'
 import Footer from '../components/Footer';
 import AdminHeader from '../components/AdminHeader';
+import UsersList from '../components/UsersList';
 
-const AdminPage = () => {
+function AdminUsers() {
   return (
     <>
     <AdminHeader/>
 
-    <div className='bg-red-500'>
-      <h1>admin</h1>
-    </div>
+    <UsersList/>
 
     <Footer/>
     </>
   )
 }
 
-export default AdminPage
+export default AdminUsers
