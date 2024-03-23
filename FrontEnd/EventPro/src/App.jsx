@@ -7,6 +7,8 @@ import AdminPage from './Views/AdminPage'
 import PromotorPage from './Views/PromotorPage'
 import LandingPage from './Views/LandingPage'
 import AdminUsers from './Views/AdminUsers'
+import Profile from './Views/Profile'
+
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='/adminDashboard' element={<AdminPage/>} />
         <Route path='/promotor' element={<PromotorPage/>} />
         <Route path='/adminUsers' element={<AdminUsers/>} />

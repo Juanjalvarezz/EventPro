@@ -54,7 +54,7 @@ const UsersList = () => {
     <section alt="Lista de usuarios" className="w-11/12 mx-auto mt-5">
       <h1 className='text-3xl text-center poppins font-bold mb-4'>Lista de Usuarios</h1>
       <div className="flex justify-center mb-4">
-        <select value={filterRole} onChange={e => setFilterRole(e.target.value)} className="p-2 border rounded-lg">
+        <select value={filterRole} onChange={e => setFilterRole(e.target.value)} className="animate-pulse p-2 border rounded-lg">
           <option value="">Todos los roles</option>
           <option value="admin">Admin</option>
           <option value="user">Usuario</option>
