@@ -8,6 +8,7 @@ function AdminUsers() {
     <>
     <AdminHeader/>
 
+    <h1 className='text-3xl text-center poppins font-bold mb-4'>Lista de Usuarios</h1>
     <UsersList/>
 
     <Footer/>
