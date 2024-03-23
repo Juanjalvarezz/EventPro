@@ -28,9 +28,9 @@ export default function App() {
       <div  onClick={() => setOpen((prev) => !prev)}>
         <Trail open={open}>
           <span>Conectar,</span>
-          <span>Explorar,</span>
-          <span>Disfrutar,</span>
-          <span>Experimentar</span>
+          <span className='text-[#CAA8F5]'>Explorar,</span>
+          <span className='text-[#9984D4]'>Disfrutar,</span>
+          <span className='text-[#673698]'>Experimentar</span>
         </Trail>
       </div>
     </>
