@@ -67,7 +67,7 @@ const Profile = () => {
                   placeholder="Correo electrónico"
                   style={{ minHeight: '40px' }}
                 />
-                <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-secondary-50 font-bold py-2 px-4 rounded mt-2">
                   Guardar
                 </button>
               </>
@@ -82,7 +82,7 @@ const Profile = () => {
                     </div>
                     <button
                       onClick={handleEdit}
-                      className="bg-blue-500 animate-bounce hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+                      className="bg-blue-500 animate-bounce hover:bg-blue-700 text-secondary-50 font-bold py-2 px-4 rounded mt-2"
                     >
                       Editar Perfil
                     </button>

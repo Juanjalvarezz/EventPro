@@ -66,7 +66,7 @@ const UsersList = () => {
       </div>
       {isLoading ? ( // Mostrar el loader mientras isLoading es true
         <div className="flex justify-center items-center mt-40 mb-40">
-          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24 shadow-2xl shadow-[#CAA8F5] animate-spin"></div>
+          <div className="loader ease-linear rounded-full border-8 border-t-8 border-secondary-200 h-24 w-24 shadow-2xl shadow-[#CAA8F5] animate-spin"></div>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -74,7 +74,7 @@ const UsersList = () => {
             <div key={user._id} className="p-5 rounded-xl mb-3 flex flex-col items-center justify-center transform transition hover:scale-110 duration-300" style={{ background: '#9984D4', minWidth: 0 }}>
               {editingUserId === user._id ? (
                 <div className="flex flex-col items-center">
-                  <h1 className='bg-[#592E83] text-white font-bold py-2 px-4 rounded mr-2 mb-2'>Editando</h1>
+                  <h1 className='bg-[#592E83] text-secondary-50 font-bold py-2 px-4 rounded mr-2 mb-2'>Editando</h1>
                   <input
                     type="text"
                     value={editedUser.name}
@@ -99,7 +99,7 @@ const UsersList = () => {
                     placeholder="Rol"
                     style={{ minHeight: '40px' }}
                   />
-                  <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                  <button onClick={handleSave} className="bg-blue-500 hover:bg-blue-700 text-secondary-50 font-bold py-2 px-4 rounded mt-2">
                     Guardar
                   </button>
                 </div>
@@ -113,13 +113,13 @@ const UsersList = () => {
                   <div className="flex flex-wrap mt-4">
                     <button
                       onClick={() => handleEdit(user._id, user)}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 mb-2"
+                      className="bg-blue-500 hover:bg-blue-700 text-secondary-50 font-bold py-2 px-4 rounded mr-2 mb-2"
                     >
                       Editar
                     </button>
                     <button
                       onClick={() => handleDelete(user._id)}
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-2"
+                      className="bg-red-500 hover:bg-red-700 text-secondary-50 font-bold py-2 px-4 rounded mb-2"
                     >
                       Eliminar
                     </button>
