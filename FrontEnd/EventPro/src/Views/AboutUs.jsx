@@ -7,11 +7,13 @@ import brain from '../assets/img/brain.png'
 import service from '../assets/img/service.png'
 import partners from '../assets/img/partners.png'
 import integrity from '../assets/img/trust.png'
+import AnimatedPage from '../components/AnimatedPage';
 
 
 function AboutUs() {
   return (
     <>
+    <AnimatedPage>
       <UserHeader />
       
       <div className="bg-primary-700 py-16 px-4 sm:px-6 lg:px-8 -mt-8">
@@ -70,7 +72,7 @@ function AboutUs() {
                 
                 <section className='w-4/5 mx-auto text-center mb-8 space-y-11'>
                 <div className="grid items-center ">
-                    <span className="text-white text-3xl font-bold mb-2 mt-8">Creatividad</span>
+                    <span className="text-white text-2xl font-bold mb-2 mt-8">Creatividad</span>
                     <p className="text-gray-300 text-xl font-bold">Fomentamos una cultura de creatividad, alentando ideas y soluciones innovadoras en todo lo que hacemos.</p>
                     <img src={brain} alt='creatividad' className='w-4/12 mx-auto mt-2'/>
                 </div>
@@ -104,6 +106,7 @@ function AboutUs() {
 
 
       <Footer />
+      </AnimatedPage>
     </>
   );
 }
