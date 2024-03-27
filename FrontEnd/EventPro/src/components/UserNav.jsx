@@ -30,7 +30,7 @@ const UserNav = () => {
     { name: "Home" , to: "/dashboard", active: false },
     { name: "Perfil", to: "/profile", active: false },
     { name: "Pagina1", to: "/dashboard", active: false },
-    { name: "Pagina2", to: "/dashboard", active: false },
+    { name: "AboutUs", to: "/aboutUs", active: false },
     { name: "LogOut", to: "/", active: false },
   ]);
 
