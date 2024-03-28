@@ -1,12 +1,10 @@
 import React from 'react'
 import Footer from '../components/Footer'
 import UserHeader from '../components/UserHeader'
-import AnimatedPage from '../components/AnimatedPage'
 
 function PromotorPage() {
   return (
     <>
-    <AnimatedPage>
     <UserHeader/>
 
     <div className='bg-blue-500'>
@@ -14,7 +12,6 @@ function PromotorPage() {
     </div>
 
     <Footer/>
-    </AnimatedPage>
     </>
   )
 }

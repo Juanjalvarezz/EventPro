@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Footer from '../components/Footer';
 import LoginHeader from '../components/LoginHeader';
-import AnimatedPage from '../components/AnimatedPage'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -49,7 +48,6 @@ const Login = () => {
 
   return (
     <>
-    <AnimatedPage>
       <LoginHeader />
 
       <div className="flex justify-center items-center">
@@ -115,7 +113,6 @@ const Login = () => {
       </div>
 
       <Footer />
-      </AnimatedPage>
     </>
   );
 };

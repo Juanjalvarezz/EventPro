@@ -3,7 +3,6 @@ import axios from 'axios';
 import Footer from '../components/Footer';
 import UserHeader from '../components/UserHeader';
 import cd from '../assets/img/cd.png';
-import AnimatedPage from '../components/AnimatedPage';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -43,7 +42,6 @@ const Profile = () => {
 
   return (
     <>
-    <AnimatedPage>
       <UserHeader />
 
       <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
@@ -97,7 +95,6 @@ const Profile = () => {
       </section>
 
       <Footer />
-      </AnimatedPage>
     </>
   );
 };
