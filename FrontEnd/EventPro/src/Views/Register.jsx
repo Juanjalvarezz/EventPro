@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import LoginHeader from "../components/LoginHeader";
+import AnimatedPage from "../components/AnimatedPage";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -18,7 +19,7 @@ const Register = () => {
       return;
     }
     try {
-      await axios.post("http://localhost:3000/api/auth/singup", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/auth/singup`, {
         name,
         email,
         password,
@@ -36,6 +37,7 @@ const Register = () => {
 
   return (
     <>
+    <AnimatedPage>
       <LoginHeader />
 
       <div className="flex justify-center items-center">
@@ -137,6 +139,7 @@ const Register = () => {
       </div>
 
       <Footer />
+      </AnimatedPage>
     </>
   );
 };

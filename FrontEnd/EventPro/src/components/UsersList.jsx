@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const UsersList = () => {
@@ -11,7 +11,7 @@ const UsersList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/auth/users');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/auth/users`);
         setTimeout(() => { // Simula un retraso de 3 segundos antes de mostrar los datos
           setUsers(res.data.users);
           setIsLoading(false); // Después de 3 segundos, se cambia isLoading a false
@@ -30,7 +30,7 @@ const UsersList = () => {
 
   const handleSave = async () => {
     try {
-      const res = await axios.put(`http://localhost:3000/api/auth/users/${editingUserId}`, editedUser);
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/auth/users/${editingUserId}`, editedUser);
       console.log('User updated:', res.data);
       setUsers(users.map(user =>
         user._id === editingUserId ? { ...user, ...editedUser } : user
@@ -44,7 +44,7 @@ const UsersList = () => {
 
   const handleDelete = async id => {
     try {
-      const res = await axios.delete(`http://localhost:3000/api/auth/users/${id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/auth/users/${id}`);
       console.log('User deleted:', res.data);
       setUsers(users.filter(user => user._id !== id));
     } catch (error) {

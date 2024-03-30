@@ -7,11 +7,13 @@ import brain from '../assets/img/brain.png'
 import service from '../assets/img/service.png'
 import partners from '../assets/img/partners.png'
 import integrity from '../assets/img/trust.png'
+import AnimatedPage from '../components/AnimatedPage';
 
 
 function AboutUs() {
   return (
     <>
+    <AnimatedPage>
       <UserHeader />
       
       <div className="bg-primary-700 py-16 px-4 sm:px-6 lg:px-8 -mt-8">
@@ -104,6 +106,7 @@ function AboutUs() {
 
 
       <Footer />
+      </AnimatedPage>
     </>
   );
 }

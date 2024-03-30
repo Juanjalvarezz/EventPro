@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { MONGODB_NAME, MONGODB_PASS } = process.env;
 
-const URI = `mongodb+srv://${MONGODB_NAME}:${MONGODB_PASS}@eventpro.pzt83fa.mongodb.net/?retryWrites=true&w=majority&appName=EventPro`
+const URI = `mongodb+srv://${MONGODB_NAME}:${MONGODB_PASS}@eventpro.j9agcmc.mongodb.net/${MONGODB_NAME}`
 
 //Mongo DB
 mongoose

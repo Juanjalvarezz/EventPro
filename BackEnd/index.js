@@ -1,10 +1,7 @@
-require('dotenv').config();
-
 const app = require('./src/server');
-require('./src/config/database');
 
 const PORT = app.get('port');
 
 app.listen(PORT, () => {
-  console.log("Servidor corriendo en puerto " + PORT);
+  console.log("Server listen on port: ", PORT)
 })

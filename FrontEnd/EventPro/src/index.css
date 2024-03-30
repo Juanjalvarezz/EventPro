@@ -9,6 +9,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  font-size: clamp(0.8rem, 2vw, 1.12rem);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +29,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
 
 @keyframes ping {
   75%, 100% {
