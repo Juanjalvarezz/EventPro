@@ -3,10 +3,12 @@ import Trail from '../components/Trail'
 import LoginHeader from '../components/LoginHeader'
 import LandingCard from '../components/LandingCard'
 import Footer from '../components/Footer'
+import AnimatedPage from '../components/AnimatedPage'
 
 function LandingPage() {
   return (
     <>
+    <AnimatedPage>
     <LoginHeader/>
 
     <section className="w-11/12 mx-auto mt-10 text-center">
@@ -18,6 +20,7 @@ function LandingPage() {
 
 
     <Footer/>
+    </AnimatedPage>
     </>
   )
 }

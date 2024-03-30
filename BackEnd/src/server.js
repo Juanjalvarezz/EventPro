@@ -18,6 +18,7 @@ app.use(express.json());
 //Rutas
 app.use('/api/auth', authRouter);
 
+/*
 // Global Error
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -28,5 +29,6 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+*/
 
 module.exports = app;

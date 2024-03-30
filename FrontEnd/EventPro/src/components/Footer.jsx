@@ -10,11 +10,11 @@ const Footer = () => {
       <div className="mt-4 md:mt-0 md:ml-4">
         <p>&copy; 2024 EventPro. Todos los derechos reservados.</p>
         <div className="mt-4 text-center">
-          <a href="#" className="text-white hover:text-blue-800 hover:underline mr-4">
-            Facebook
+          <a href="https://github.com/Juanjalvarezz/EventPro" className="text-white hover:text-blue-800 hover:underline mr-4">
+            Github
           </a>
-          <a href="#" className="text-white hover:text-blue-800 hover:underline mr-4">
-            Twitter
+          <a href="https://www.figma.com/file/rD3pF4scD8AgLvAX1CJQf6/EventPro?type=design&node-id=0%3A1&mode=design&t=sIuKTveTc8LrOCBH-1" className="text-white hover:text-blue-800 hover:underline mr-4">
+            Figma
           </a>
           <a href="#" className="text-white hover:text-blue-800 hover:underline">
             Instagram

@@ -1,9 +1,8 @@
 const User = require('../models/userModel');
 const createError = require('../utils/appError');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
+const { hashPassword, comparePasswords, createToken } = require('../middlewares/authMiddleware');
 
-// Registro de Usuarios
 exports.singup = async (req, res, next) => {
   try {
     const { name, email, password, role } = req.body;
@@ -14,7 +13,7 @@ exports.singup = async (req, res, next) => {
       return next(new createError("Usuario ya existe", 400));
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await hashPassword(password);
 
     const newUser = await User.create({
       name,
@@ -23,15 +22,9 @@ exports.singup = async (req, res, next) => {
       role: role || 'user', // Si no se proporciona un rol, se establece como 'user'
     });
 
-    // JWT
-    const token = jwt.sign({ _id: newUser._id }, 'secretkey123', {
-      expiresIn: '90d',
-    });
-    
     res.status(201).json({
       status: 'Exitoso',
       message: 'Usuario Registrado correctamente',
-      [token]: token,
       user: {
         _id: newUser._id,
         name: newUser.name,
@@ -41,9 +34,10 @@ exports.singup = async (req, res, next) => {
     });
 
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
+
 
 // Login de Usarios
 exports.login = async (req, res, next) => {
@@ -54,16 +48,15 @@ exports.login = async (req, res, next) => {
 
     if (!user) return next(new createError("Usuario no encontrado", 404));
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    const isPasswordValid = await comparePasswords(password, user.password);
 
     if (!isPasswordValid) {
       return next(new createError('Email o Contraseña Invalido', 401));
     }
 
-    // JWT
-    const token = jwt.sign({ _id: user._id }, 'secretkey123', {
-      expiresIn: '90d',
-    });
+    // Generar token
+    const token = createToken(user._id);
 
     res.status(200).json({
       status: 'Exitoso',
@@ -176,3 +169,32 @@ exports.getUserById = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.verifySesion = async (req, res, next) => {
+  try {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(400).json({ message: "No hay sesión activa, vuelva a ingresar"})
+    }
+
+    const decoded = jwt.verify(token, process.env.SECRET_KEY,)
+    const userFound = await User.findById(decoded)
+
+    if (!userFound) return res.status(400).json({ message: "Token inválido"})
+
+    res.status(200).json({
+      status: 'Exitoso',
+      token,
+      message: 'Inicio de sesion exitoso',
+      user: {
+        _id: userFound._id,
+        name: userFound.name,
+        email: userFound.email,
+        role: userFound.role,
+      },
+    });
+  } catch (error) {
+
+  }
+}

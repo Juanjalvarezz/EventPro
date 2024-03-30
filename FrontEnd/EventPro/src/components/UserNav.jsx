@@ -14,7 +14,7 @@ const NavLinks = ({ categories }) => {
         key={index}
         to={category.to}
         onClick={() => handleClick(category)}
-        className={`${category.active ? "text-red-500" : ""} hover:bg-purple-900 text-center hover:text-white hover:shadow-lg hover:rounded-3xl p-5`}
+        className={`${category.active ? "text-red-500" : ""} hover:bg-primary-900 text-center hover:text-secondary-50 hover:shadow-lg hover:rounded-3xl p-5`}
       >
         {category.name}
       </NavLink>
@@ -30,7 +30,7 @@ const UserNav = () => {
     { name: "Home" , to: "/dashboard", active: false },
     { name: "Perfil", to: "/profile", active: false },
     { name: "Pagina1", to: "/dashboard", active: false },
-    { name: "Pagina2", to: "/dashboard", active: false },
+    { name: "AboutUs", to: "/aboutUs", active: false },
     { name: "LogOut", to: "/", active: false },
   ]);
 
