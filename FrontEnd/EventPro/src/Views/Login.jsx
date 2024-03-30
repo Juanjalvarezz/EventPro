@@ -6,37 +6,34 @@ import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const { login, user } = useAuth();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [submitted, setSubmitted] = useState(false); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true); 
 
     try {
-      await login(email, password)
-
-    } catch (error) {
-      console.log(error)
-      setError("Error al inciar sesion");
-    }
-  };
-
-  useEffect(()=> {
-    if (user) {
-      if (user.role === 'user') {
+      await login(email, password);
+      const role = localStorage.getItem('role');
+      if (role === 'user') {
         navigate("/dashboard")
-      } else if (user.role === "admin") {
+      } else if (role === "admin") {
         navigate("/adminDashboard")
-      } else if (user.role === "promotor") {
+      } else if (role === "promotor") {
         navigate("/promotor")
       } else {
         setError("Ocurrio un error en la respuesta del servidor")
-      }    
+      }
+    } catch (error) {
+      console.log(error);
+      setError("Error al iniciar sesión");
     }
-  }, [user])
+  };
 
   const redirectToRegister = () => {
     navigate('/register');
@@ -92,18 +89,18 @@ const Login = () => {
                   Contraseña
                 </label>
               </div>
-              {error && <p className="text-red-500 text-center">{error}</p>}
+              {submitted && error && <p className="text-red-500 text-center">{error}</p>}
               <button
                 className="w-full py-2 px-4 bg-primary-500 hover:bg-primary-700 rounded-md shadow-lg text-secondary-50 font-semibold transition duration-200"
                 type="submit"
               >
-                Iniciar Sesion
+                Iniciar Sesión
               </button>
             </form>
             <div className="text-center text-secondary-300">
-              No tienes una cuenta?{' '}
+              ¿No tienes una cuenta?{' '}
               <a className="text-primary-300 hover:underline cursor-pointer" onClick={redirectToRegister}>
-                Registrate
+                Regístrate
               </a>
             </div>
           </div>

@@ -107,8 +107,8 @@ const UsersList = () => {
                 <div className="flex flex-col items-center">
                   <div className='text-center'>
                     <h3 className="amatic-sc-bold text-3xl font-bold mb-2">{user.name}</h3>
-                    <p className="text-xl mb-1">{user.email}</p>
-                    <p className="text-xl mb-1">{user.role}</p>
+                    <p className="text-xl mb-1">Email: {user.email}</p>
+                    <p className="text-xl mb-1">Rol: {user.role}</p>
                   </div>
                   <div className="flex flex-wrap mt-4">
                     <button

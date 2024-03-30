@@ -22,8 +22,9 @@ export const AuthProvider = ({ children }) => {
       console.log(res.data)
       setIsAuthenticated(true);
       setUser(res.data.user)
-      //Guardar el token en localStorage para mantener sesion iniciada
-      localStorage.setItem('token', res.data.token)
+      //Guardar el token en localStorage para mantener sesión iniciada
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('role', res.data.user.role);
       setLoading(false)
     } catch (error) {
       console.log(error);
@@ -37,10 +38,11 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     setUser(null);
 
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
   }
 
-  //Verificar sesion al momento de cargar
+  //Verificar sesión al momento de cargar
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -58,7 +60,7 @@ export const AuthProvider = ({ children }) => {
       if (!res.data) {
         logout();
       } else {
-        setUser(res.data.user)
+        setUser({...res.data.user, role: localStorage.getItem('role')}); 
         setIsAuthenticated(true)
       }
     } catch (error) {
@@ -89,7 +91,7 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext)
   if (!context) {
-    throw new Error("useAuth debe ser utlizado con AuthProvider")
+    throw new Error("useAuth debe ser utilizado con AuthProvider")
   }
   return context;
 };
