@@ -9,8 +9,8 @@ const AdminPage = () => {
     <AnimatedPage>
     <AdminHeader/>
 
-    <div className='bg-red-500'>
-      <h1>admin</h1>
+    <div className='text-center'>
+      <h1>Admin Dashboard + eventos con editar y eliminar</h1>
     </div>
 
     <Footer/>

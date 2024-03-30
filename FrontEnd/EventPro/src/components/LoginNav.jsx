@@ -30,6 +30,7 @@ const LoginNav = () => {
     { name: "Home" , to: "/", active: false },
     { name: "Login", to: "/login", active: false },
     { name: "Registro", to: "/register", active: false },
+    { name: "AboutUs", to: "/loginAboutUs", active: false },
   ]);
 
   const toggleNavbar = () => {

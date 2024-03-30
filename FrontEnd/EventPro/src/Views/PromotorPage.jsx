@@ -1,14 +1,14 @@
 import Footer from '../components/Footer'
-import UserHeader from '../components/UserHeader'
 import AnimatedPage from '../components/AnimatedPage'
+import PromotorHeader from '../components/PromotorHeader'
 
 function PromotorPage() {
   return (
     <>
     <AnimatedPage>
-    <UserHeader/>
+    <PromotorHeader/>
 
-    <div className='bg-blue-500'>
+    <div className='text-center'>
       <h1>Promotor</h1>
     </div>
 

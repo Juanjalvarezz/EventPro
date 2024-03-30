@@ -36,8 +36,9 @@ const UserNav = () => {
 
   const [categories, setCategories] = useState([
     { name: "Home", to: "/dashboard", active: false },
+    { name: "Eventos", to: "/eventos", active: false },
+    { name: "Boletos", to: "/boletos", active: false },
     { name: "Perfil", to: "/profile", active: false },
-    { name: "Pagina1", to: "/dashboard", active: false },
     { name: "AboutUs", to: "/aboutUs", active: false },
     { name: "LogOut", to: "/", active: false },
   ]);

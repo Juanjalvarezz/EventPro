@@ -27,7 +27,7 @@ const Login = () => {
       } else if (role === "promotor") {
         navigate("/promotor")
       } else {
-        setError("Ocurrio un error en la respuesta del servidor")
+        setError("Email o contraseña Incorrecta")
       }
     } catch (error) {
       console.log(error);
