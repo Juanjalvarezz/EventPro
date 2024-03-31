@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 4000);
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:4173'],
+  origin: ['http://localhost:3000', 'http://localhost:3010'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));

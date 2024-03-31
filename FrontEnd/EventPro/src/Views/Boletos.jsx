@@ -7,7 +7,7 @@ function Boletos() {
     <>
     <UserHeader/>
 
-    <h1 className='text-center'>Boletos comprados por el usuario</h1>
+    <h1 className='text-center py-52'>Boletos comprados por el usuario</h1>
     
     <Footer/>
     </>

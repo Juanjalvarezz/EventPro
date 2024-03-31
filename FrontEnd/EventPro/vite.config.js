@@ -57,6 +57,6 @@ export default defineConfig({
     port: 3000,
   },
   server: {
-    port: 3000
+    port: 3010
   }
 });

@@ -6,7 +6,7 @@ function PromotorPage() {
     <>
     <PromotorHeader/>
 
-    <div className='text-center'>
+    <div className='text-center py-52'>
       <h1>Promotor</h1>
     </div>
 

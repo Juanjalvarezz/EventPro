@@ -7,7 +7,7 @@ function Solicitud() {
     <>
         <PromotorHeader/>
 
-      <h1 className='text-center'>Solicitud de eventos + formulario para solicitar evento</h1>
+      <h1 className='text-center py-52'>Solicitud de eventos + formulario para solicitar evento</h1>
 
         <Footer/>
     </>

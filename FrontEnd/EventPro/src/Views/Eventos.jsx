@@ -7,7 +7,7 @@ function Eventos() {
     <>
     <UserHeader/>
 
-    <h1 className='text-center'>Eventos disponibles + compra de boletos</h1>
+    <h1 className='text-center py-52'>Eventos disponibles + compra de boletos</h1>
     
     <Footer/>
     </>

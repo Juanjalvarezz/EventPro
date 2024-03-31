@@ -63,7 +63,7 @@ const Register = () => {
       <AnimatedPage>
         <LoginHeader />
 
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center py-5">
           <div
             className="max-w-md w-11/12 bg-gradient-to-r from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 "
             style={{ animation: "slideInFromLeft 1s ease-out" }}

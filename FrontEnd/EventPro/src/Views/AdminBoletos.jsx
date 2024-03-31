@@ -7,7 +7,7 @@ function AdminBoletos() {
     <>
         <AdminHeader/>
 
-      <h1 className='text-center'>Boletos comprados por evento</h1>
+      <h1 className='text-center py-52'>Boletos comprados por evento</h1>
 
         <Footer/>
     </>

@@ -7,7 +7,7 @@ function Solicitudes() {
     <>
         <AdminHeader/>
 
-      <h1 className='text-center'>Solicitudes de eventos + formulario para subir eventos</h1>
+      <h1 className='text-center py-52'>Solicitudes de eventos + formulario para subir eventos</h1>
 
         <Footer/>
     </>

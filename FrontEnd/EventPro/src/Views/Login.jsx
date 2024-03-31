@@ -43,7 +43,7 @@ const Login = () => {
       <AnimatedPage>
         <LoginHeader />
 
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center py-8">
           <div className="max-w-md w-11/12 bg-gradient-to-r from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 md:w-4/5" style={{ animation: 'slideInFromLeft 1s ease-out' }}>
             <h2 className="text-center text-4xl font-extrabold text-secondary-50 -mb-5" style={{ animation: 'appear 2s ease-out' }}>
               Bienvenido
