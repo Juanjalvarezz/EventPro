@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Footer from '../components/Footer';
-import cd from '../assets/img/cd.png';
+import cd from '/cd.png';
 import AnimatedPage from '../components/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
 import PromotorHeader from './PromotorHeader';

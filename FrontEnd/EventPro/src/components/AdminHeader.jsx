@@ -1,4 +1,4 @@
-import Logo from "../assets/img/Logo.png"
+import Logo from "/Logo.png"
 import AdminNav from "./AdminNav";
 
 function AdminHeader() {

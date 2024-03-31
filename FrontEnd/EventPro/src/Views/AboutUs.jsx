@@ -1,12 +1,12 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import UserHeader from '../components/UserHeader';
-import mision from '../assets/img/mision.jpg'
-import servicios from '../assets/img/servicios.jpg'
-import brain from '../assets/img/brain.png'
-import service from '../assets/img/service.png'
-import partners from '../assets/img/partners.png'
-import integrity from '../assets/img/trust.png'
+import mision from '/mision.jpg'
+import servicios from '/servicios.jpg'
+import brain from '/brain.png'
+import service from '/service.png'
+import partners from '/partners.png'
+import integrity from '/trust.png'
 
 
 function AboutUs() {

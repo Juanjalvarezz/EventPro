@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { updateRequest } from '../utils/request';
 import Footer from '../components/Footer';
 import UserHeader from '../components/UserHeader';
-import cd from '../assets/img/cd.png';
+import cd from '/cd.png';
 import AnimatedPage from '../components/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
 
