@@ -1,38 +1,38 @@
 import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 import LoginHeader from '../components/LoginHeader';
+import AnimatedPage from '../components/AnimatedPage'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, user, isAuthenticated, errors } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [submitted, setSubmitted] = useState(false); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true); 
 
-    try {
-      await login(email, password);
-      const role = localStorage.getItem('role');
-      if (role === 'user') {
-        navigate("/dashboard")
-      } else if (role === "admin") {
-        navigate("/adminDashboard")
-      } else if (role === "promotor") {
-        navigate("/promotor")
-      } else {
-        setError("Email o contraseña Incorrecta")
-      }
-    } catch (error) {
-      console.log(error);
-      setError("Error al iniciar sesión");
-    }
+    login(email, password)
+    console.log(errors)
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (user) {
+        if (user.role === 'user') {
+          navigate("/dashboard")
+        } else if (user.role === "admin") {
+          navigate("/adminDashboard")
+        } else if (user.role === "promotor") {
+          navigate("/promotor")
+        } else {
+          throw new Error("Ocurrio un error en la respuesta del servidor")
+        }
+      }
+    }
+  }, [isAuthenticated, navigate, user])
 
   const redirectToRegister = () => {
     navigate('/register');
@@ -40,6 +40,7 @@ const Login = () => {
 
   return (
     <>
+      <AnimatedPage>
         <LoginHeader />
 
         <div className="flex justify-center items-center">
@@ -87,24 +88,25 @@ const Login = () => {
                   Contraseña
                 </label>
               </div>
-              {submitted && error && <p className="text-red-500 text-center">{error}</p>}
+              {errors && <p className="text-red-500 text-center">{errors}</p>}
               <button
                 className="w-full py-2 px-4 bg-primary-500 hover:bg-primary-700 rounded-md shadow-lg text-secondary-50 font-semibold transition duration-200"
                 type="submit"
               >
-                Iniciar Sesión
+                Iniciar Sesion
               </button>
             </form>
             <div className="text-center text-secondary-300">
-              ¿No tienes una cuenta?{' '}
+              No tienes una cuenta?{' '}
               <a className="text-primary-300 hover:underline cursor-pointer" onClick={redirectToRegister}>
-                Regístrate
+                Registrate
               </a>
             </div>
           </div>
         </div>
 
         <Footer />
+      </AnimatedPage>
     </>
   );
 };

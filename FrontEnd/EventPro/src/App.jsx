@@ -11,7 +11,6 @@ import AboutUs from "./Views/AboutUs";
 import Solicitudes from "./Views/Solicitudes";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
-import ConditionalRedirect from './utils/ConditionalRedirect'
 import AdminBoletos from "./Views/AdminBoletos";
 import Eventos from "./Views/Eventos";
 import Boletos from "./Views/Boletos";
@@ -28,12 +27,8 @@ function App() {
           {/* Rutas publicas */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/loginAboutUs" element={<LoginAboutUs />} />
-
-          {/* Rutas condicionales */}
-          <Route element={<ConditionalRedirect to="/dashboard" />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-          </Route>
 
           {/* Rutas protegidas */}
           <Route element={<ProtectedRoutes />}>

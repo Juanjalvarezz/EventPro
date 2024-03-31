@@ -12,13 +12,16 @@ const app = express();
 app.set('port', process.env.PORT || 4000);
 
 //Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+}));
 app.use(express.json());
 
 //Rutas
 app.use('/api/auth', authRouter);
 
-/*
 // Global Error
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -29,6 +32,6 @@ app.use((err, req, res, next) => {
     message,
   });
 });
-*/
+
 
 module.exports = app;
