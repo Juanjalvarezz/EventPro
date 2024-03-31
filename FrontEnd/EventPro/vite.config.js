@@ -10,30 +10,36 @@ const manifestForPlugin = {
     short_name: "EventPro",
     description: "Plataforma dedicada a gestionar eventos",
     lang: 'es-ES',
-    icons: [{
-      src: '/android-chrome-192x192.png',
-      sizes: '192x192',
-      type: 'image/png',
-      purpose: 'favicon'
-    },
-    {
-      src: '/android-chrome-512x512.png',
-      sizes: '512x512',
-      type: 'image/png',
-      purpose: 'favicon'
-    },
-    {
-      src: '/apple-touch-icon.png',
-      sizes: '180x180',
-      type: 'image/png',
-      purpose: 'apple touch icon',
-    },
-    {
-      src: '/maskable_icon.png',
-      sizes: '512x512',
-      type: 'image/png',
-      purpose: 'any maskable',
-    }
+    icons: [
+      {
+        src: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'favicon'
+      },
+      {
+        src: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'favicon'
+      },
+      {
+        src: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+        purpose: 'apple touch icon',
+      },
+      {
+        src: '/maskable-icon.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any maskable',
+      },
+      {
+        src: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png'
+      }
     ],
     theme_color: '#A855F7',
     background_color: '#242424',
