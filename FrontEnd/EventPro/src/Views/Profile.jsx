@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { updateRequest } from '../utils/request';
 import Footer from '../components/Footer';
 import UserHeader from '../components/UserHeader';
 import cd from '../assets/img/cd.png';
+import AnimatedPage from '../components/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
 
 const Profile = () => {
@@ -20,7 +21,7 @@ const Profile = () => {
 
   const handleSave = async () => {
     try {
-      const res = await axios.put(`${import.meta.env.VITE_API_URL}/auth/users/${user._id}`, editedUser);
+      const res = await updateRequest(user._id, editedUser);
       console.log('User updated:', res.data);
       setEditing(false);
     } catch (error) {
@@ -30,6 +31,7 @@ const Profile = () => {
 
   return (
     <>
+      <AnimatedPage>
         <UserHeader />
 
         <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
@@ -83,6 +85,7 @@ const Profile = () => {
         </section>
 
         <Footer />
+      </AnimatedPage>
     </>
   );
 };
