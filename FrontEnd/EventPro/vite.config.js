@@ -53,4 +53,5 @@ const manifestForPlugin = {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), VitePWA(manifestForPlugin)],
+  server: { port: 3000 },
 });
