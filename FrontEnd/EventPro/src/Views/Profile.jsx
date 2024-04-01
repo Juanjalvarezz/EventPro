@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { updateRequest } from '../utils/request';
+import { updateRequest } from '../utils/authRequest';
 import Footer from '../components/Footer';
 import UserHeader from '../components/UserHeader';
 import cd from '/cd.png';

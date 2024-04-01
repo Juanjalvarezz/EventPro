@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loading from './Loading'
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -65,9 +66,7 @@ const UsersList = () => {
         </select>
       </div>
       {isLoading ? ( // Mostrar el loader mientras isLoading es true
-        <div className="flex justify-center items-center mt-40 mb-40">
-          <div className="loader ease-linear rounded-full border-8 border-t-8 border-secondary-200 h-24 w-24 shadow-2xl shadow-[#CAA8F5] animate-spin"></div>
-        </div>
+        <Loading />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {filteredUsers.map(user => (

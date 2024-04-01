@@ -16,6 +16,7 @@ const verifyToken = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
+    console.log(error)
     next(new createError('Token de autorizacion no válido'));
   }
 }
@@ -23,7 +24,7 @@ const verifyToken = (req, res, next) => {
 //Middleware para renovar token
 const renewToken = (req, res, next) => {
   try {
-    const token = jwt.sign({ _id: req.user._id}, SECRET_KEY, {
+    const token = jwt.sign({ _id: req.user._id, role: req.user.role}, SECRET_KEY, {
       expiresIn: '90d',
     });
     res.status(200).json({token})
@@ -32,8 +33,8 @@ const renewToken = (req, res, next) => {
   }
 }
 
-const createToken = (userId) => {
-  return jwt.sign({ _id: userId }, SECRET_KEY, {
+const createToken = (user) => {
+  return jwt.sign(user, SECRET_KEY, {
     expiresIn: '90d',
   })
 }

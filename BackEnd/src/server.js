@@ -5,7 +5,8 @@ require('dotenv').config();
 require('./config/database');
 
 // Importar Rutas
-const authRouter = require('./routes/userRoutes')
+const authRouter = require('./routes/userRoutes');
+const eventRouter = require('./routes/eventRoutes');
 
 const app = express();
 // PUERTO
@@ -21,6 +22,7 @@ app.use(express.json());
 
 //Rutas
 app.use('/api/auth', authRouter);
+app.use('/api/events', eventRouter);
 
 // Global Error
 app.use((err, req, res, next) => {

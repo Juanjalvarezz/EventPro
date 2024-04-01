@@ -1,4 +1,4 @@
-import { loginRequest, verifyRequest, signupRequest } from '../utils/request.js';
+import { loginRequest, verifyRequest, signupRequest } from '../utils/authRequest.js';
 import { createContext, useState, useContext, useEffect } from 'react';
 
 export const AuthContext = createContext();

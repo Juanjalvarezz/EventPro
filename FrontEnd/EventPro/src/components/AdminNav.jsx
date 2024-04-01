@@ -36,7 +36,7 @@ const AdminNav = () => {
 
   const [categories, setCategories] = useState([
     { name: "Home" , to: "/adminDashboard", active: false },
-    { name: "Solicitudes", to: "/solicitudes", active: false },
+    { name: "Solicitudes", to: "/solicitud", active: false },
     { name: "Boletos", to: "/adminBoletos", active: false },
     { name: "Usuarios", to: "/adminUsers", active: false },
     { name: "LogOut", to: "/", active: false },

@@ -8,7 +8,6 @@ import LandingPage from "./Views/LandingPage";
 import AdminUsers from "./Views/AdminUsers";
 import Profile from "./Views/Profile";
 import AboutUs from "./Views/AboutUs";
-import Solicitudes from "./Views/Solicitudes";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
 import AdminBoletos from "./Views/AdminBoletos";
@@ -38,7 +37,6 @@ function App() {
             <Route path="/adminDashboard" element={<AdminPage />} />
             <Route path="/promotor" element={<PromotorPage />} />
             <Route path="/adminUsers" element={<AdminUsers />} />
-            <Route path="/solicitudes" element={<Solicitudes />} />
             <Route path="/adminBoletos" element={<AdminBoletos />} />
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/boletos" element={<Boletos />} />
