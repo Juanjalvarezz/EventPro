@@ -18,6 +18,7 @@ app.use(cors({
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));
+
 app.use(express.json());
 
 //Rutas
