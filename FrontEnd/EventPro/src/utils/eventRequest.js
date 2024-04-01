@@ -9,3 +9,8 @@ export const getEventByPromotor = (id) => {
   const res = axios.get(`/events/${id}`);
   return res;
 }
+
+export const getEventsStatus = () => {
+  const res = axios.get(`/events/status`);
+  return res;
+}

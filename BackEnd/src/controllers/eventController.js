@@ -40,37 +40,36 @@ const createEvent = async (req, res) => {
 const getEventsByPromotorIdStatus = async (req, res) => {
   const promotorID = req.params.id;
   try {
+    // Verificar si el promotor existe
     const promotor = await User.findById(promotorID);
 
     if (!promotor) {
       return res.status(404).json({ message: "Promotor no encontrado" });
     }
 
-    const events = await Event.find({ promotorID, status: 'Por aprobar' })
+    const events = await Event.find({ promotorID, status: 'Por aprobar' }).populate('promotorID');
 
-    if (!events) {
-      return res.status(404).json({ message: "No se encontraron eventos para este promotor" })
+    if (!events || events.length === 0) {
+      return res.status(404).json({ message: "No se encontraron eventos por aprobar para este promotor" });
     }
 
     res.status(200).json({
       message: 'Exitoso',
       status: 200,
-      events: events.map(event => ({
-        ...event.toObject(),
-        promotor: promotor.toObject()
-      })),
-    })
+      events: events
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Error del servidor al buscar eventos" });
   }
 }
 
+
 const getEventsStatus = async (req, res) => {
   try {
-    const events = await Event.find({ status: 'Por aprobar' })
+    const events = await Event.find({ status: 'Por aprobar' }).populate('promotorID', 'name email');
 
-    if (!events) {
+    if (!events || events.length === 0) {
       return res.status(404).json({ message: "No se encontraron eventos por aprobar" })
     }
 

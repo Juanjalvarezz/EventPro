@@ -121,7 +121,13 @@ const FormRequest = () => {
           required // Campo requerido
         />
         {user.role === 'admin' && (
-          <select className='p-2 bg-secondary-50 text-secondary-900 border rounded-xl' name="estatus" id="estatus" value={formData.estatus} onChange={handleChange}>
+          <select 
+            className='p-2 bg-secondary-50 text-secondary-900 border rounded-xl' 
+            name="estatus" 
+            id="estatus" 
+            value={formData.estatus} 
+            onChange={handleChange}
+          >
             <option value="Por aprobar">Por aprobar</option>
             <option value="Disponible">Disponible</option>
             <option value="Finalizado">Finalizado</option>
