@@ -12,16 +12,14 @@ const manifestForPlugin = {
     lang: 'es-ES',
     icons: [
       {
-        src: '/android-chrome-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'favicon'
-      },
-      {
         src: '/android-chrome-512x512.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'favicon'
+      },
+      {
+        src: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png'
       },
       {
         src: '/apple-touch-icon.png',
@@ -33,16 +31,16 @@ const manifestForPlugin = {
         src: '/maskable-icon.png',
         sizes: '512x512',
         type: 'image/png',
-        purpose: 'any maskable',
+        purpose: 'maskable'
       },
       {
-        src: '/android-chrome-192x192.png',
-        sizes: '192x192',
-        type: 'image/png'
+        src: "/favicon.ico",
+        sizes: "48x48"
       }
     ],
     theme_color: '#A855F7',
     background_color: '#242424',
+    display_override: ["window-control-overlay", "minimal-ui"],
     display: "standalone",
     scope: '/',
     start_url: "/",
