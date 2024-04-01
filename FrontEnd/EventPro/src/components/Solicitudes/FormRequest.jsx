@@ -1,10 +1,11 @@
-import { useState } from 'react'
-import { useAuth } from '../../contexts/AuthContext'
+import React, { useState } from 'react';
+import { useAuth } from '../../contexts/AuthContext';
 import { createEvent } from '../../utils/eventRequest';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const FormRequest = () => {
   const { user } = useAuth();
-  const [aprobando, setAprobando] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     date: '',
@@ -19,14 +20,26 @@ const FormRequest = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await createEvent(formData)
-      console.log(res)
+      const res = await createEvent(formData);
+      console.log(res);
+      toast.success('¡Evento creado exitosamente!');
+      setFormData({
+        name: '',
+        date: '',
+        time: '',
+        place: '',
+        description: '',
+        images: '',
+        status: 'Por aprobar',
+        tickets: [],
+      });
     } catch (error) {
-      console.log(error)
+      console.log(error);
+      toast.error('Ocurrió un error al crear el evento');
     }
-  }
+  };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -73,6 +86,7 @@ const FormRequest = () => {
 
   return (
     <div>
+      <ToastContainer />
       <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat text-3xl w-lg font-black text-center p-3 rounded-xl'>Cargar un Evento</h2>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-5 p-5 lg:p-8 lg:rounded-2xl rounded-xl bg-primary-350 flex flex-col gap-3">
         <input
@@ -150,7 +164,7 @@ const FormRequest = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default FormRequest
+export default FormRequest;

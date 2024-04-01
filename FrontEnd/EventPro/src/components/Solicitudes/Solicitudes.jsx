@@ -61,9 +61,9 @@ function Solicitudes() {
 
                     <div className="md:flex md:flex-col md:items-center md:justify-center md:flex-1">
                       {user.role === 'admin' && (
-                        <div className="bg-gradient-to-r from-complement-800 to-primary-600 flex flex-col justify-center items-center mx-auto w-4/5 md:w-11/12 p-1 rounded-xl mb-2">
-                          <p className="sm:text-lg md:text-md xl:text-lg">Promotor: {event.promotorID.name}</p>
-                          <p className="sm:text-lg md:text-md xl:text-lg">Email: {event.promotorID.email}</p>
+                        <div className="bg-gradient-to-r from-complement-800 to-primary-600 flex flex-col justify-center items-center mx-auto w-fit p-3 rounded-xl mb-2">
+                          <p className="sm:text-lg md:text-sm xl:text-lg">Promotor: {event.promotorID.name}</p>
+                          <p className="sm:text-lg md:text-sm xl:text-lg">Email: {event.promotorID.email}</p>
                         </div>
                       )}
 
