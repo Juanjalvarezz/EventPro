@@ -16,6 +16,6 @@ export const verifyRequest = (token) => {
 }
 
 export const updateRequest = (id, editedUser) => {
-  const res = axios.post(`auth/users/${id}`, editedUser)
+  const res = axios.put(`auth/users/${id}`, editedUser)
   return res;
 }
