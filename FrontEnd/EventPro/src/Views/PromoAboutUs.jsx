@@ -1,4 +1,3 @@
-import React from 'react';
 import Footer from '../components/Footer';
 import mision from '/mision.jpg'
 import servicios from '/servicios.jpg'
@@ -6,8 +5,8 @@ import brain from '/brain.png'
 import service from '/service.png'
 import partners from '/partners.png'
 import integrity from '/trust.png'
-import AnimatedPage from '../components/AnimatedPage';
-import PromotorHeader from '../components/PromotorHeader';
+import AnimatedPage from '../components/Animation/AnimatedPage';
+import PromotorHeader from '../components/Header/PromotorHeader';
 
 
 function PromoAboutUs() {

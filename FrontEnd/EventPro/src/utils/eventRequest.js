@@ -14,3 +14,8 @@ export const getEventsStatus = () => {
   const res = axios.get(`/events/status`);
   return res;
 }
+
+export const deleteEvent = (id) => {
+  const res = axios.delete(`/events/delete/${id}`);
+  return res;
+}

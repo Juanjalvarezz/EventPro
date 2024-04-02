@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { updateRequest } from '../utils/authRequest';
 import Footer from '../components/Footer';
-import UserHeader from '../components/UserHeader';
+import UserHeader from '../components/Header/UserHeader';
 import cd from '/cd.png';
-import AnimatedPage from '../components/AnimatedPage';
+import AnimatedPage from '../components/Animation/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
 
 const Profile = () => {

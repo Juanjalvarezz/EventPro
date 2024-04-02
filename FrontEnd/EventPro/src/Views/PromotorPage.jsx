@@ -1,5 +1,5 @@
 import Footer from '../components/Footer'
-import PromotorHeader from '../components/PromotorHeader'
+import PromotorHeader from '../components/Header/PromotorHeader'
 
 function PromotorPage() {
   return (

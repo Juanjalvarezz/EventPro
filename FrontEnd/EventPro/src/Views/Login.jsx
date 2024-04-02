@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
-import LoginHeader from '../components/LoginHeader';
-import AnimatedPage from '../components/AnimatedPage'
+import LoginHeader from '../components/Header/LoginHeader';
+import AnimatedPage from '../components/Animation/AnimatedPage'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 

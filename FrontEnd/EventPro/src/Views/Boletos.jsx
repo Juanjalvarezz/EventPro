@@ -1,5 +1,5 @@
 import React from 'react'
-import UserHeader from '../components/UserHeader'
+import UserHeader from '../components/Header/UserHeader'
 import Footer from '../components/Footer'
 
 function Boletos() {

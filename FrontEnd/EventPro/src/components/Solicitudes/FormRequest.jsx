@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { createEvent } from '../../utils/eventRequest';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const FormRequest = () => {
   const { user } = useAuth();
+  const [aprobando, setAprobando] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     date: '',
@@ -35,7 +36,7 @@ const FormRequest = () => {
       });
     } catch (error) {
       console.log(error);
-      toast.error('Ocurrió un error al crear el evento');
+      toast.error(error.response.data.message);
     }
   };
 
@@ -134,7 +135,7 @@ const FormRequest = () => {
           className="p-2 bg-secondary-50 text-secondary-900 border rounded-xl md:col-span-2"
           required // Campo requerido
         />
-        {user.role === 'admin' && (
+        {user.role === 'admin' && aprobando && (
           <select 
             className='p-2 bg-secondary-50 text-secondary-900 border rounded-xl' 
             name="estatus" 

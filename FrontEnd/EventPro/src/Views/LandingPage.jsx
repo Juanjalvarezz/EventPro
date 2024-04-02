@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import Trail from '../components/Trail'
-import LoginHeader from '../components/LoginHeader'
-import LandingCard from '../components/LandingCard'
+import Trail from '../components/LandingPage/Trail'
+import LoginHeader from '../components/Header/LoginHeader'
+import LandingCard from '../components/LandingPage/LandingCard'
 import Footer from '../components/Footer'
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom'

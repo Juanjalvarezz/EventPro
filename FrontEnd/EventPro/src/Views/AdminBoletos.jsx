@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminHeader from '../components/AdminHeader'
+import AdminHeader from '../components/Header/AdminHeader'
 import Footer from '../components/Footer'
 
 function AdminBoletos() {

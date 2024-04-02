@@ -1,6 +1,6 @@
 import Footer from '../components/Footer'
-import PromotorHeader from '../components/PromotorHeader'
-import AdminHeader from '../components/AdminHeader';
+import PromotorHeader from '../components/Header/PromotorHeader'
+import AdminHeader from '../components/Header/AdminHeader';
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import FormRequest from '../components/Solicitudes/FormRequest'

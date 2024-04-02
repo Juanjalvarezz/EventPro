@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import mision from "/mision.jpg";
 import servicios from "/servicios.jpg";
 import brain from "/brain.png";

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Footer from '../components/Footer';
+import Footer from './Footer';
 import cd from '/cd.png';
-import AnimatedPage from '../components/AnimatedPage';
+import AnimatedPage from './Animation/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
-import PromotorHeader from './PromotorHeader';
+import PromotorHeader from './Header/PromotorHeader';
 
 const PromoProfile = () => {
   const { user } = useAuth();

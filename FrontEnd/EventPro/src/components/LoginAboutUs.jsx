@@ -1,9 +1,9 @@
 import React from "react";
-import Footer from "../components/Footer";
-import AnimatedPage from "../components/AnimatedPage";
-import LoginHeader from "./LoginHeader";
+import Footer from "./Footer";
+import AnimatedPage from "./Animation/AnimatedPage";
+import LoginHeader from "./Header/LoginHeader";
 
-import About from "../components/About";
+import About from "./About";
 
 function LoginAboutUs() {
   return (

@@ -1,5 +1,5 @@
 import Logo from "/Logo.png"
-import PromotorNav from "./PromotorNav";
+import PromotorNav from "../Nav/PromotorNav";
 
 function PromotorHeader() {
   return (

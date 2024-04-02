@@ -1,6 +1,6 @@
 import React from 'react'
 import Footer from '../components/Footer';
-import AdminHeader from '../components/AdminHeader';
+import AdminHeader from '../components/Header/AdminHeader';
 
 const AdminPage = () => {
   return (

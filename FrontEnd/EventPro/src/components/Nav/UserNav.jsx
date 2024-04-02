@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { useAuth } from "../contexts/AuthContext"; 
+import { useAuth } from "../../contexts/AuthContext"; 
 
 const NavLinks = ({ categories, handleLogout }) => { 
   const handleClick = (category) => {
@@ -30,15 +30,16 @@ const NavLinks = ({ categories, handleLogout }) => {
   );
 };
 
-const PromotorNav = () => {
+const UserNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { logout } = useAuth(); 
 
   const [categories, setCategories] = useState([
-    { name: "Home", to: "/promotor", active: false },
-    { name: "Solicitud", to: "/solicitud", active: false },
-    { name: "Perfil", to: "/promoProfile", active: false },
-    { name: "AboutUs", to: "/promoAboutUs", active: false },
+    { name: "Home", to: "/dashboard", active: false },
+    { name: "Eventos", to: "/eventos", active: false },
+    { name: "Boletos", to: "/boletos", active: false },
+    { name: "Perfil", to: "/profile", active: false },
+    { name: "AboutUs", to: "/aboutUs", active: false },
     { name: "LogOut", to: "/", active: false },
   ]);
 
@@ -74,4 +75,4 @@ const PromotorNav = () => {
   );
 };
 
-export default PromotorNav;
+export default UserNav;

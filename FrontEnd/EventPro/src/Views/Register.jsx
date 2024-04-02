@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import Footer from "../components/Footer";
-import LoginHeader from "../components/LoginHeader";
-import AnimatedPage from "../components/AnimatedPage";
+import LoginHeader from "../components/Header/LoginHeader";
+import AnimatedPage from "../components/Animation/AnimatedPage";
 import { useAuth } from "../contexts/AuthContext.jsx";
 
 const Register = () => {

@@ -10,6 +10,7 @@ export default function Card() {
 
   return (
     <>
+      {/*
       <div className="bg-white text-complement-800 p-4 xl:p-6 flex flex-col rounded poppins">
         <div className="flex justify-between">
           <p className="font-bold">Orden:#1234</p>
@@ -44,6 +45,8 @@ export default function Card() {
           </div>
         </div>
       </div>
+      
+      */}
     </>
   );
 }

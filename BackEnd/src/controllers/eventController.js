@@ -37,6 +37,26 @@ const createEvent = async (req, res) => {
   }
 }
 
+const deleteEvent = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const eventDeleted = await Event.findByIdAndDelete(id)
+
+    if (!eventDeleted) {
+      return res.status(404).json({ message: "No se encontró el evento que se desea eliminar" });
+    }
+
+    res.status(200).json({
+      message: 'Exitoso',
+      status: 200,
+      events: eventDeleted
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error del servidor al buscar eventos" });
+  }
+}
+
 const getEventsByPromotorIdStatus = async (req, res) => {
   const promotorID = req.params.id;
   try {
@@ -84,4 +104,4 @@ const getEventsStatus = async (req, res) => {
   }
 }
 
-module.exports = { createEvent, getEventsByPromotorIdStatus, getEventsStatus };
+module.exports = { createEvent, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };

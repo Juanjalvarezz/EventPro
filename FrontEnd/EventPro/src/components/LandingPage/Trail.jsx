@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useTrail, animated } from '@react-spring/web';
-import Login from '../Views/Login';
 
 const Trail = ({ open, children }) => {
   const items = React.Children.toArray(children);

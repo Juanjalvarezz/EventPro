@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../components/Footer';
-import UserHeader from '../components/UserHeader';
-import DashboardCards from '../components/DashboardCards';
+import UserHeader from '../components/Header/UserHeader';
+import DashboardCards from '../components/Dashboard/DashboardCards';
 
 const Dashboard = () => {
   return (
