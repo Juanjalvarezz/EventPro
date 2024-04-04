@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { updateRequest } from '../utils/authRequest';
 import Footer from '../components/Footer';
-import UserHeader from '../components/Header/UserHeader';
+import Header from '../components/Header/Header';
 import cd from '/cd.png';
 import AnimatedPage from '../components/Animation/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
@@ -31,8 +31,8 @@ const Profile = () => {
 
   return (
     <>
+      <Header />
       <AnimatedPage>
-        <UserHeader />
 
         <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
         <section className="w-11/12 mx-auto mt-5">
@@ -84,8 +84,8 @@ const Profile = () => {
           </div>
         </section>
 
-        <Footer />
       </AnimatedPage>
+      <Footer />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import Footer from "../components/Footer";
-import LoginHeader from "../components/Header/LoginHeader";
+import Header from "../components/Header/Header";
 import AnimatedPage from "../components/Animation/AnimatedPage";
 import { useAuth } from "../contexts/AuthContext.jsx";
 
@@ -20,7 +20,7 @@ const Register = () => {
     e.preventDefault();
     if (password !== confirmPassword) {
       return setError("Las Contraseñas no coinciden");
-    }    
+    }
     register(name, email, password, isPromotor);
     setRegisterAttempt(true);
   };
@@ -41,7 +41,7 @@ const Register = () => {
     }
   }, [isAuthenticated, navigate, user])
 
-  useEffect(()=> {
+  useEffect(() => {
     if (registerAttempt && !error) {
       redirectToLogin();
     }
@@ -60,8 +60,8 @@ const Register = () => {
 
   return (
     <>
+      <Header />
       <AnimatedPage>
-        <LoginHeader />
 
         <div className="flex justify-center items-center py-5">
           <div
@@ -120,7 +120,10 @@ const Register = () => {
                   placeholder="Confirmar Contraseña"
                   type="password"
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value)
+                    setError('');
+                  }}
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
                 />
                 <label className="absolute left-0 -top-3.5 text-secondary-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-secondary-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-primary-500 peer-focus:text-sm">
@@ -161,8 +164,8 @@ const Register = () => {
           </div>
         </div>
 
-        <Footer />
       </AnimatedPage>
+      <Footer />
     </>
   );
 };

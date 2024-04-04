@@ -1,15 +1,25 @@
-import React from 'react'
-import UserHeader from '../components/Header/UserHeader'
+import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
+import { useAuth } from '../contexts/AuthContext'
 
 function Boletos() {
+  const { user } = useAuth();
+
   return (
     <>
-    <UserHeader/>
+      <Header />
 
-    <h1 className='text-center py-52'>Boletos comprados por el usuario</h1>
-    
-    <Footer/>
+      {user.role === 'admin' ? (
+        <>
+          <h1 className='text-center py-52'>Boletos comprados por evento</h1>
+        </>
+      ) : (
+        <>
+          <h1 className='text-center py-52'>Boletos comprados por el usuario</h1>
+        </>
+      )}
+
+      <Footer />
     </>
   )
 }

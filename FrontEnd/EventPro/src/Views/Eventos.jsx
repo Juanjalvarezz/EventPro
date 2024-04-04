@@ -1,11 +1,10 @@
-import React from 'react'
-import UserHeader from '../components/Header/UserHeader'
+import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
 
 function Eventos() {
   return (
     <>
-    <UserHeader/>
+    <Header/>
 
     <h1 className='text-center py-52'>Eventos disponibles + compra de boletos</h1>
     

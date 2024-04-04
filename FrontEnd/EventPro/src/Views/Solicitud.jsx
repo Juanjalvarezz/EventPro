@@ -1,10 +1,12 @@
 import Footer from '../components/Footer'
-import PromotorHeader from '../components/Header/PromotorHeader'
-import AdminHeader from '../components/Header/AdminHeader';
+import Header from '../components/Header/Header';
+
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
-import FormRequest from '../components/Solicitudes/FormRequest'
 import { useEffect } from 'react';
+
+import AnimatedPage from '../components/Animation/AnimatedPage';
+import FormRequest from '../components/Solicitudes/FormRequest'
 import Solicitudes from '../components/Solicitudes/Solicitudes';
 
 function Solicitud() {
@@ -19,15 +21,13 @@ function Solicitud() {
 
   return (
     <>
-      {user.role === 'admin' ? (
-        <AdminHeader />
-      ) : (
-        <PromotorHeader />
-      )}
-      <div className='flex justify-center items-center flex-col w-full'>
-        <FormRequest />
-        <Solicitudes />
-      </div>
+      <Header />
+      <AnimatedPage>
+        <div className='flex justify-center items-center flex-col w-full'>
+          <FormRequest />
+          <Solicitudes />
+        </div>
+      </AnimatedPage>
       <Footer />
     </>
   )

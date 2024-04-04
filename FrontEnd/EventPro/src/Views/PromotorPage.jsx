@@ -1,16 +1,20 @@
+import AnimatedPage from '../components/Animation/AnimatedPage'
 import Footer from '../components/Footer'
-import PromotorHeader from '../components/Header/PromotorHeader'
+import Header from '../components/Header/Header'
 
 function PromotorPage() {
   return (
     <>
-    <PromotorHeader/>
+      <Header />
 
-    <div className='text-center py-52'>
-      <h1>Promotor</h1>
-    </div>
+      <AnimatedPage>
+        <div className='text-center py-52'>
+          <h1>Promotor</h1>
+        </div>
 
-    <Footer/>
+      </AnimatedPage>
+
+      <Footer />
     </>
   )
 }

@@ -1,16 +1,29 @@
-import React from 'react'
 import Footer from '../components/Footer';
-import UserHeader from '../components/Header/UserHeader';
+import Header from '../components/Header/Header';
 import DashboardCards from '../components/Dashboard/DashboardCards';
+import AnimatedPage from '../components/Animation/AnimatedPage';
+import { useAuth } from '../contexts/AuthContext';
 
 const Dashboard = () => {
+  const { user } = useAuth();
+
+
   return (
     <>
-    <UserHeader/>
+      <Header />
+      <AnimatedPage>
+        {user.role === 'admin' ? (
+          <>
+            <div className='text-center py-52'>
+              <h1>Admin Dashboard + eventos con editar y eliminar</h1>
+            </div>
+          </>
+        ) : (
+          <DashboardCards />
+        )}
 
-    <DashboardCards/>
-
-    <Footer/>
+      </AnimatedPage>
+      <Footer />
     </>
   )
 }

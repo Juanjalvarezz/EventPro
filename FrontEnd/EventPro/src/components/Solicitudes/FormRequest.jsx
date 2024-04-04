@@ -22,8 +22,7 @@ const FormRequest = () => {
     e.preventDefault();
     try {
       const res = await createEvent(formData);
-      console.log(res);
-      toast.success('¡Evento creado exitosamente!');
+      toast.success(res.data.message);
       setFormData({
         name: '',
         date: '',

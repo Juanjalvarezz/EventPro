@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
-import LoginHeader from '../components/Header/LoginHeader';
+import Header from '../components/Header/Header';
 import AnimatedPage from '../components/Animation/AnimatedPage'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
@@ -21,27 +21,23 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       if (user) {
-        if (user.role === 'user') {
-          navigate("/dashboard")
-        } else if (user.role === "admin") {
-          navigate("/adminDashboard")
-        } else if (user.role === "promotor") {
+        if (user.role === 'promotor') {
           navigate("/promotor")
         } else {
-          throw new Error("Ocurrio un error en la respuesta del servidor")
+          navigate("/dashboard")
         }
       }
     }
   }, [isAuthenticated, navigate, user])
-
+  
   const redirectToRegister = () => {
     navigate('/register');
   };
 
   return (
     <>
+      <Header />
       <AnimatedPage>
-        <LoginHeader />
 
         <div className="flex justify-center items-center py-8">
           <div className="max-w-md w-11/12 bg-gradient-to-r from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 md:w-4/5" style={{ animation: 'slideInFromLeft 1s ease-out' }}>
@@ -105,8 +101,8 @@ const Login = () => {
           </div>
         </div>
 
-        <Footer />
       </AnimatedPage>
+      <Footer />
     </>
   );
 };
