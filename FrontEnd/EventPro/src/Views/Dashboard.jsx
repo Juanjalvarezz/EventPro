@@ -3,6 +3,9 @@ import Header from '../components/Header/Header';
 import DashboardCards from '../components/Dashboard/DashboardCards';
 import AnimatedPage from '../components/Animation/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
+import pesoPluma from "/PesoPluma.webp"
+import concierto from '/Concierto.png'
+import UserContent from '../components/Dashboard/UserContent';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -19,7 +22,12 @@ const Dashboard = () => {
             </div>
           </>
         ) : (
-          <DashboardCards />
+
+          <>
+            <DashboardCards />
+            <UserContent/>
+
+          </>
         )}
 
       </AnimatedPage>

@@ -1,4 +1,5 @@
-import AnimatedPage from '../components/Animation/AnimatedPage'
+import DashboardCards from '../components/Dashboard/DashboardCards'
+import UserContent from '../components/Dashboard/UserContent'
 import Footer from '../components/Footer'
 import Header from '../components/Header/Header'
 
@@ -7,12 +8,8 @@ function PromotorPage() {
     <>
       <Header />
 
-      <AnimatedPage>
-        <div className='text-center py-52'>
-          <h1>Promotor</h1>
-        </div>
-
-      </AnimatedPage>
+      <DashboardCards/>
+      <UserContent/>
 
       <Footer />
     </>
