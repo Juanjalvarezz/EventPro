@@ -24,7 +24,7 @@ function Solicitudes() {
 
   const fetchEventRequest = async () => {
     try {
-      const res = await getEventsStatus();
+      const res = await getEventsStatus('Por aprobar');
       setEvents(res.data.events);
       setIsOpenModal(Object.fromEntries(res.data.events.map(event => [event._id, false])));
     } catch (error) {

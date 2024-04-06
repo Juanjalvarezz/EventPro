@@ -10,8 +10,8 @@ export const getEventByPromotor = (id) => {
   return res;
 }
 
-export const getEventsStatus = () => {
-  const res = axios.get(`/events/status`);
+export const getEventsStatus = (status) => {
+  const res = axios.get(`/events/status/${status}`);
   return res;
 }
 

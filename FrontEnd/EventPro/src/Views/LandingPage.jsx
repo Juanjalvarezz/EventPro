@@ -14,12 +14,10 @@ function LandingPage() {
 
   useEffect(() => {
     if (user) {
-      if (user.role === 'user') {
-        navigate("/dashboard")
-      } else if (user.role === 'promotor') {
+      if (user.role === 'promotor') {
         navigate("/promotor")
-      } else if (user.role === 'admin') {
-        navigate("/adminDashboard")
+      } else {
+        navigate("/dashboard")
       }
     }
   }, [user, navigate])

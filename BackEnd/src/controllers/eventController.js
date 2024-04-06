@@ -87,10 +87,16 @@ const getEventsByPromotorIdStatus = async (req, res) => {
 
 const getEventsStatus = async (req, res) => {
   try {
-    const events = await Event.find({ status: 'Por aprobar' }).populate('promotorID', 'name email');
+    const status = req.params.filter;
+
+    if (!status && status !== 'Disponible' && status !== 'Por aprobar' && status !== 'Finalizado') {
+      return res.status(400).json({ message: "No se ha seleccionado ningun estatus válido para consultar "});
+    }
+    
+    const events = await Event.find({ status: status }).populate('promotorID', 'name email');
 
     if (!events || events.length === 0) {
-      return res.status(404).json({ message: "No se encontraron eventos por aprobar" })
+      return res.status(404).json({ message: `No se encontraron eventos ${status}` })
     }
 
     res.status(200).json({

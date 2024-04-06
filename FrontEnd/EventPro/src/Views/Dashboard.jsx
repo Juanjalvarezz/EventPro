@@ -1,4 +1,4 @@
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'; 
 import Header from '../components/Header/Header';
 import DashboardCards from '../components/Dashboard/DashboardCards';
 import AnimatedPage from '../components/Animation/AnimatedPage';
