@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom'
 import AnimatedPage from '../components/Animation/AnimatedPage'
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton'
 
 function LandingPage() {
   const { user } = useAuth();
@@ -37,6 +38,7 @@ function LandingPage() {
 
       </AnimatedPage>
       <Footer />
+      <ScrollToTopButton/>
     </>
   )
 }

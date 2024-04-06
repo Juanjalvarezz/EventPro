@@ -6,6 +6,7 @@ import AnimatedPage from "../components/Animation/AnimatedPage";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTopButton from "../components/Animation/ScrollToTopButton.jsx";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -181,6 +182,7 @@ const Register = () => {
 
       </AnimatedPage>
       <Footer />
+      <ScrollToTopButton/>
     </>
   );
 };

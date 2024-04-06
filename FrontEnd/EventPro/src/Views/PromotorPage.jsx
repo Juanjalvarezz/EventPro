@@ -1,3 +1,4 @@
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton'
 import DashboardCards from '../components/Dashboard/DashboardCards'
 import UserContent from '../components/Dashboard/UserContent'
 import Footer from '../components/Footer'
@@ -12,6 +13,7 @@ function PromotorPage() {
       <UserContent/>
 
       <Footer />
+      <ScrollToTopButton/>
     </>
   )
 }

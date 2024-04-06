@@ -5,6 +5,7 @@ import Header from '../components/Header/Header';
 import cd from '/cd.png';
 import AnimatedPage from '../components/Animation/AnimatedPage';
 import { useAuth } from '../contexts/AuthContext';
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 
 const Profile = () => {
   const { user } = useAuth();
@@ -86,6 +87,7 @@ const Profile = () => {
 
       </AnimatedPage>
       <Footer />
+      <ScrollToTopButton/>
     </>
   );
 };

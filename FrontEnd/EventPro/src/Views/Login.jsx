@@ -6,6 +6,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 
 const Login = () => {
   const { login, user, isAuthenticated, errors } = useAuth();
@@ -109,6 +110,7 @@ const Login = () => {
         </div>
       </AnimatedPage>
       <Footer />
+      <ScrollToTopButton/>
     </>
   );
 };

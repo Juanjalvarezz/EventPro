@@ -1,6 +1,7 @@
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
 import { useAuth } from '../contexts/AuthContext'
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 
 function Boletos() {
   const { user } = useAuth();
@@ -20,6 +21,7 @@ function Boletos() {
       )}
 
       <Footer />
+      <ScrollToTopButton/>
     </>
   )
 }

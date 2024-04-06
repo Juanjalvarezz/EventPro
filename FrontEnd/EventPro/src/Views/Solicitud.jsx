@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import AnimatedPage from '../components/Animation/AnimatedPage';
 import FormRequest from '../components/Solicitudes/FormRequest'
 import Solicitudes from '../components/Solicitudes/Solicitudes';
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 
 function Solicitud() {
   const { user } = useAuth();
@@ -29,6 +30,7 @@ function Solicitud() {
         </div>
       </AnimatedPage>
       <Footer />
+      <ScrollToTopButton/>
     </>
   )
 }
