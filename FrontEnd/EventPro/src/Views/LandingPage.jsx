@@ -5,6 +5,7 @@ import LandingCard from '../components/LandingPage/LandingCard'
 import Footer from '../components/Footer'
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom'
+import AnimatedPage from '../components/Animation/AnimatedPage'
 
 function LandingPage() {
   const { user } = useAuth();
@@ -25,6 +26,7 @@ function LandingPage() {
   return (
     <>
       <Header />
+      <AnimatedPage>
 
       <section className="w-11/12 mx-auto mt-10 text-center py-12">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-3 justify-center items-baseline cursor-pointer">
@@ -33,7 +35,7 @@ function LandingPage() {
         </div>
       </section>
 
-
+      </AnimatedPage>
       <Footer />
     </>
   )

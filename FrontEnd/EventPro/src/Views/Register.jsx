@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import AnimatedPage from "../components/Animation/AnimatedPage";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -11,7 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [isPromotor, setIsPromotor] = useState(false); // Nuevo estado para el botón de toggle
+  const [isPromotor, setIsPromotor] = useState(false); 
   const navigate = useNavigate();
   const { register, user, isAuthenticated, errors } = useAuth();
   const [registerAttempt, setRegisterAttempt] = useState(false);
@@ -43,9 +45,9 @@ const Register = () => {
 
   useEffect(() => {
     if (registerAttempt && !error) {
-      redirectToLogin();
+      redirectToLoginWithDelay();
     }
-  }, [error, registerAttempt])
+  }, [error, registerAttempt]);
 
   //Si hubo error al registrar que me lo almacene en la estado local de error
   useEffect(() => {
@@ -58,10 +60,19 @@ const Register = () => {
     navigate("/login");
   };
 
+  const redirectToLoginWithDelay = () => {
+    toast.success("Registrado...");
+    setTimeout(() => {
+      redirectToLogin();
+      toast.dismiss(); 
+    }, 2000); 
+  };
+
   return (
     <>
       <Header />
       <AnimatedPage>
+      <ToastContainer />
 
         <div className="flex justify-center items-center py-5">
           <div
@@ -80,6 +91,7 @@ const Register = () => {
                   placeholder="Nombre y Apellido"
                   type="text"
                   id="name"
+                  required=""
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
@@ -94,6 +106,7 @@ const Register = () => {
                   placeholder="john@example.com"
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
                   type="email"
+                  required=""
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -106,6 +119,7 @@ const Register = () => {
                 <input
                   placeholder="Contraseña"
                   type="password"
+                  required=""
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
@@ -119,6 +133,7 @@ const Register = () => {
                 <input
                   placeholder="Confirmar Contraseña"
                   type="password"
+                  required=""
                   value={confirmPassword}
                   onChange={(e) => {
                     setConfirmPassword(e.target.value)
