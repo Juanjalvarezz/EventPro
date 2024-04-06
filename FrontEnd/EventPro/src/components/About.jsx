@@ -27,7 +27,9 @@ function About() {
                 src="https://i.ibb.co/GV7GxCZ/avatar1105266211.jpg"
                 alt="Team member 1"
               />
-              <h2 className="text-2xl lg:text-3xl font-bold">Juan González</h2>
+              <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
+                Juan González
+              </h2>
               <p className="text-secondary-400 font-bold">CEO & Fundador</p>
             </div>
             <div className="flex flex-col items-center space-y-4">
@@ -36,7 +38,9 @@ function About() {
                 src="https://i.ibb.co/t29p6jp/avatar1473660530.jpg"
                 alt="Team member 2"
               />
-              <h2 className="text-2xl lg:text-3xl font-bold">Juan Sarmiento</h2>
+              <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
+                Juan Sarmiento
+              </h2>
               <p className="text-secondary-400 font-bold">CEO & Fundador</p>
             </div>
             <div className="flex flex-col items-center space-y-4">
@@ -45,7 +49,7 @@ function About() {
                 src="https://i.ibb.co/s3F1qsr/avatar1045924273.jpg"
                 alt="Team member 3"
               />
-              <h2 className="text-2xl lg:text-3xl font-bold">
+              <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
                 Leonardo Méndez
               </h2>
               <p className="text-secondary-400 font-bold">CEO & Fundador</p>
@@ -64,7 +68,7 @@ function About() {
           <h2 className="text-center text-2xl lg:text-3xl font-bold text-secondary-50 mb-8 mt-6">
             Nuestra Misión
           </h2>
-          <p className="text-center text-lg lg:text-xl text-secondary">
+          <p className="text-center text-lg lg:text-xl text-secondary-50">
             En EventPro, nuestra misión es conectar a las personas a través de
             experiencias emocionantes y memorables. Nos esforzamos por crear
             eventos que inspiren, deleiten y unan a comunidades de todo el
@@ -78,7 +82,7 @@ function About() {
             alt="Servicios"
             className="max-w-full rounded-full w-2/5 mx-auto animate-ping"
           />
-          <h2 className="text-center text-2xl lg:text-3xl font-bold text-secondary mb-8 mt-6">
+          <h2 className="text-center text-2xl lg:text-3xl font-bold text-secondary-50 mb-8 mt-6">
             Nuestros Servicios
           </h2>
           <p className="text-center text-lg lg:text-xl text-secondary-50">

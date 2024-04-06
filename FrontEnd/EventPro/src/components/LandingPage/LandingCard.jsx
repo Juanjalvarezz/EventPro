@@ -9,7 +9,7 @@ function LandingCard() {
           <h2 className="text-center lg:text-5xl md:text-4xl sm:text-3xl xs:text-3xl font-extrabold text-secondary-50" style={{ animation: 'appear 2s ease-out', margin: 0 }}>
             ¡Bienvenido a EventPro!</h2>
         </div>
-        <p>Sumérgete en el emocionante mundo de los eventos y boletos. Con EventPro, tendrás acceso a una amplia gama de eventos emocionantes, desde conciertos y festivales hasta conferencias y obras de teatro. Descubre experiencias inolvidables y asegura tus boletos con facilidad. ¡Prepárate para vivir momentos inolvidables con EventPro!</p>
+        <p className='text-secondary-50'>Sumérgete en el emocionante mundo de los eventos y boletos. Con EventPro, tendrás acceso a una amplia gama de eventos emocionantes, desde conciertos y festivales hasta conferencias y obras de teatro. Descubre experiencias inolvidables y asegura tus boletos con facilidad. ¡Prepárate para vivir momentos inolvidables con EventPro!</p>
 
         <div className="flex justify-center gap-5 mt-4">
           <Link 
