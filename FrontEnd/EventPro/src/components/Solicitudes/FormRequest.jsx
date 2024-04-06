@@ -87,7 +87,7 @@ const FormRequest = () => {
   return (
     <div>
       <ToastContainer />
-      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat text-3xl w-lg font-black text-center p-3 rounded-xl'>Cargar un Evento</h2>
+      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat text-3xl w-lg font-black text-center p-3 rounded-xl text-white'>Cargar un Evento</h2>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-5 p-5 lg:p-8 lg:rounded-2xl rounded-xl bg-primary-350 flex flex-col gap-3">
         <input
           type="text"

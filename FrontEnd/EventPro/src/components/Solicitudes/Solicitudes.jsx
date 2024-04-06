@@ -67,7 +67,7 @@ function Solicitudes() {
 
   return (
     <>
-      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat w-fit text-3xl my-6 font-black text-center py-3 px-6  rounded-xl'>
+      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat w-fit text-3xl my-6 font-black text-center py-3 px-6  rounded-xl text-white'>
         Solicitudes de Eventos
       </h2>
       {isLoading ? (
@@ -76,7 +76,7 @@ function Solicitudes() {
         <>
           {events && (
             events.map(event => (
-              <div key={event._id} className="montserrat font-bold lg:w-3/5  sm:w-11/12 mb-6 text-xs md:text-sm lg:text-md">
+              <div key={event._id} className="montserrat font-bold lg:w-3/5  sm:w-11/12 mb-6 text-xs md:text-sm lg:text-md text-white">
                 <div className="bg-primary-750 mx-auto p-6 rounded-t-3xl">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
                     <div className="md:flex md:justify-center md:items-center md:flex-1">

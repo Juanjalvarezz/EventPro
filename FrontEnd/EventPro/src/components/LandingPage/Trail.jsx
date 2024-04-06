@@ -27,9 +27,9 @@ export default function App() {
       <div onClick={() => setOpen((prev) => !prev)}>
         <Trail open={open}>
           <span className='dark:text-secondary-50 text-secondary-500'>Conectar,</span>
-          <span className='dark:text-primary-250 text-primary-650'>Explorar,</span>
-          <span className='text-primary-350'>Disfrutar,</span>
-          <span className='dark:text-primary-650 text-primary-250'>Experimentar</span>
+          <span className='dark:text-primary-250  text-primary-650'>Explorar,</span>
+          <span className='dark:text-primary-350 text-primary-500'>Disfrutar,</span>
+          <span className='dark:text-primary-650  text-primary-400'>Experimentar</span>
         </Trail>
       </div>
     </>

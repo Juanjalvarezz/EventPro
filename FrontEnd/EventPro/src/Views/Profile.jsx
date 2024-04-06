@@ -36,7 +36,7 @@ const Profile = () => {
 
         <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
         <section className="w-11/12 mx-auto mt-5">
-          <h1 className='text-3xl text-center poppins font-bold mb-4'>Perfil de Usuario</h1>
+          <h1 className='dark:text-white text-primary-900 text-3xl text-center poppins font-bold mb-4'>Perfil de Usuario</h1>
           <div className="bg-[#9984D4] rounded-lg shadow-md p-8 mx-auto max-w-md w-11/12">
             <div className="flex flex-col items-center">
               {editing ? (
@@ -66,9 +66,9 @@ const Profile = () => {
                   {user && (
                     <>
                       <div className='text-center'>
-                        <h3 className="text-3xl font-bold mb-2">Hola! {user.name}</h3>
-                        <p className="poppins font-bold text-2xl mb-1 text-[#230C33]">Email: {user.email}</p>
-                        <p className="poppins font-bold text-2xl mb-1 text-[#230C33]">Rol: {user.role}</p>
+                        <h3 className="text-white text-3xl font-bold mb-2">Hola! {user.name}</h3>
+                        <p className="poppins font-bold text-2xl mb-1 dark:text-[#230C33] text-primary-800">Email: {user.email}</p>
+                        <p className="poppins font-bold text-2xl mb-1 dark:text-[#230C33] text-primary-800">Rol: {user.role}</p>
                       </div>
                       <button
                         onClick={handleEdit}

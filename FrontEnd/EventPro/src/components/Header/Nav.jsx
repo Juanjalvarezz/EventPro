@@ -96,8 +96,11 @@ const Nav = () => {
     const root = document.querySelector("body"); // Puedes usar 'body' en lugar de 'html' si prefieres
     root.classList.toggle("dark-mode");
   }
-
+  
   useEffect(() => {
+    if (!localStorage.getItem("theme")) { // Si no hay tema almacenado
+      setTheme("dark"); // Establecer tema oscuro por defecto
+    }
     if (localStorage.getItem("theme") === "dark") {
       setTheme("dark");
     }
@@ -105,7 +108,7 @@ const Nav = () => {
       setTheme("light");
     }
   }, []);
-
+  
   useEffect(() => {
     if (theme === "dark") {
       document.querySelector("html")?.classList.add("dark");
@@ -118,6 +121,7 @@ const Nav = () => {
       document.querySelector("html")?.classList.add("light");
     }
   }, [theme]);
+  
 
   return (
     <>
@@ -129,7 +133,7 @@ const Nav = () => {
             className="sr-only peer"
             checked={theme === "dark" ? true : false}
           />
-          <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-complement-300 dark:peer-focus:ring-complement-300 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
+          <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-900 dark:peer-focus:ring-primary-700 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
         </label>
         <div className="hidden w-full justify-end md:flex text-xl">
           <label className="inline-flex mx-3 items-center cursor-pointer">
@@ -139,7 +143,7 @@ const Nav = () => {
               className="sr-only peer"
               checked={theme === "dark" ? true : false}
             />
-            <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-complement-300 dark:peer-focus:ring-complement-300 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
+            <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-900 dark:peer-focus:ring-primary-700 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
           </label>
           <NavLinks
             categories={categories}
