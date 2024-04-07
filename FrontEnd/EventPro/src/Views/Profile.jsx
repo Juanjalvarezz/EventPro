@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { updateRequest } from '../utils/authRequest';
 import Footer from '../components/Footer';
 import Header from '../components/Header/Header';
 import cd from '/cd.png';
@@ -8,27 +7,22 @@ import { useAuth } from '../contexts/AuthContext';
 import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, editUser } = useAuth();
   const [editing, setEditing] = useState(false);
   const [editedUser, setEditedUser] = useState({ name: '', email: '' });
 
   useEffect(() => {
     setEditedUser(user);
+    setEditing(false)
   }, [user]);
 
   const handleEdit = () => {
     setEditing(true);
   };
 
-  const handleSave = async () => {
-    try {
-      const res = await updateRequest(user._id, editedUser);
-      console.log('User updated:', res.data);
-      setEditing(false);
-    } catch (error) {
-      console.error('Error updating user:', error);
-    }
-  };
+  const handleSave = () => {
+    editUser(user._id, editedUser);
+  }
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { loginRequest, verifyRequest, signupRequest } from '../utils/authRequest.js';
+import { loginRequest, verifyRequest, signupRequest, updateRequest } from '../utils/authRequest.js';
 import { createContext, useState, useContext, useEffect } from 'react';
 
 export const AuthContext = createContext();
@@ -21,6 +21,8 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log(error)
       setErrors(error.response.data.message);
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -47,6 +49,18 @@ export const AuthProvider = ({ children }) => {
       setLoading(false)
     }
   }
+
+  const editUser = async (id, editedUser) => {
+    try {
+      const res = await updateRequest(id, editedUser);
+      console.log('User updated:', res.data);
+      setUser(res.data.user);
+    } catch (error) {
+      console.error('Error updating user:', error);
+    } finally {
+      setLoading(false)
+    }
+  };
 
   const logout = () => {
     setIsAuthenticated(false);
@@ -106,6 +120,7 @@ export const AuthProvider = ({ children }) => {
           loading,
           register,
           login,
+          editUser,
           logout,
           errors
         }}

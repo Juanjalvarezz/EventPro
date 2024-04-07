@@ -47,6 +47,9 @@ function Eventos() {
                     <div className="text-left">
                       <p className="sm:text-lg md:text-lg lg:text-xl">Ubicación: {event.place}</p>
                       <p className="sm:text-lg md:text-lg lg:text-xl">Fecha: {new Date(event.date).toLocaleDateString()}</p>
+                      {
+//                      <p className="sm:text-lg md:text-lg lg:text-xl">Hora: {event.date.getHours() + ':' + (event.date.getMinutes()).slice(-2)}</p>
+                      }
                       <p className="sm:text-lg md:text-lg lg:text-xl">Hora: {new Date(event.date).toLocaleDateString()}</p>
                       <div className="flex justify-center md:justify-start">
                         <p className="text-sm sm:text-lg md:text-lg lg:text-xl">Estatus: </p>
