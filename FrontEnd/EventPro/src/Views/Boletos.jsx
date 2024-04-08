@@ -2,12 +2,14 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer'
 import { useAuth } from '../contexts/AuthContext'
 import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
+import AnimatedPage from '../components/Animation/AnimatedPage';
 
 function Boletos() {
   const { user } = useAuth();
 
   return (
     <>
+    <AnimatedPage>
       <Header />
 
       {user.role === 'admin' ? (
@@ -22,6 +24,7 @@ function Boletos() {
 
       <Footer />
       <ScrollToTopButton/>
+      </AnimatedPage>
     </>
   )
 }

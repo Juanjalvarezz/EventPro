@@ -45,7 +45,16 @@ export default {
           600: '#2563eb',
           800: '#1e40af'
         }
-      }
+      },
+      animation: {
+        wiggle: 'wiggle 1s infinite',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'translateX(-10px)' },
+          '50%': { transform: 'translateX(0px)' },
+        },
+      },
     },
     screens: {
       xs: '250px',

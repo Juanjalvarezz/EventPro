@@ -27,7 +27,7 @@ const NavLinks = ({ categories, handleLogout, setCategories }) => {
           }}
           className={`${
             category.active ? "text-red-500" : ""
-          } hover:bg-primary-700 text-center hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-3xl p-5`}
+          } hover:bg-primary-700 text-center hover:px-12 hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-2xl p-5`}
           activeclassname="text-red-500" // Clase CSS aplicada al enlace activo
         >
           {category.name}
@@ -145,11 +145,14 @@ const Nav = () => {
             />
             <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-900 dark:peer-focus:ring-primary-700 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
           </label>
+
+          <div className="lg:text-xl md:text-md sm:text-sm" >
           <NavLinks
             categories={categories}
             handleLogout={logout}
             setCategories={setCategories}
           />
+          </div>
         </div>
 
         <div className="md:hidden">
@@ -158,7 +161,7 @@ const Nav = () => {
       </nav>
 
       {isOpen && (
-        <div className="flex basis-full ml-10 flex-col items-center text-center space-y-4">
+        <div className="flex basis-full ml-10 flex-col items-center text-center space-y-1 mb-5 p-2 "> {/* Para el menu abierto */}
           <NavLinks categories={categories} handleLogout={logout} />
         </div>
       )}
