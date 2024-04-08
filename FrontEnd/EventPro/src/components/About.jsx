@@ -30,7 +30,7 @@ function About() {
               <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
                 Juan González
               </h2>
-              <p className="dark:text-secondary-400 text-secondary-600 font-bold">CEO & Fundador</p>
+              <p className="dark:text-secondary-200 text-secondary-600 font-bold">CEO & Fundador</p>
             </div>
             <div className="flex flex-col items-center space-y-4">
               <img
@@ -41,7 +41,7 @@ function About() {
               <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
                 Juan Sarmiento
               </h2>
-              <p className="dark:text-secondary-400 text-secondary-600 font-bold">CEO & Fundador</p>
+              <p className="dark:text-secondary-200 text-secondary-600 font-bold">CEO & Fundador</p>
             </div>
             <div className="flex flex-col items-center space-y-4">
               <img
@@ -52,7 +52,7 @@ function About() {
               <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
                 Leonardo Méndez
               </h2>
-              <p className="dark:text-secondary-400 text-secondary-600 font-bold">CEO & Fundador</p>
+              <p className="dark:text-secondary-200 text-secondary-600 font-bold">CEO & Fundador</p>
             </div>
           </div>
         </div>

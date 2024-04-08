@@ -27,8 +27,8 @@ const NavLinks = ({ categories, handleLogout, setCategories }) => {
           }}
           className={`${
             category.active ? "text-red-500" : ""
-          } hover:bg-primary-700 text-center hover:px-12 hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-2xl p-5`}
-          activeclassname="text-red-500" // Clase CSS aplicada al enlace activo
+          } hover:bg-primary-700 text-center hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-2xl rounded-2xl p-5 transition duration-500 ease-in-out`}
+          activeClassName="text-red-500"
         >
           {category.name}
         </NavLink>

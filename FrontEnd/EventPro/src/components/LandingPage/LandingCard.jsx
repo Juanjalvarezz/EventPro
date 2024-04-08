@@ -13,13 +13,13 @@ function LandingCard() {
 
         <div className="flex justify-center gap-5 mt-4">
           <Link 
-            className="bg-blue-500 hover:bg-blue-700 text-secondary-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animate-bounce" 
+            className="bg-blue-500 hover:bg-blue-600 text-secondary-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animate-bounce" 
             to={"/login"}
           >
             Login
           </Link>
           <Link 
-            className="bg-primary-500 hover:bg-primary-700 text-secondary-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animate-bounce" 
+            className="bg-primary-500 hover:bg-primary-600 text-secondary-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animate-bounce" 
             to={"/register"}
           >
             Registro

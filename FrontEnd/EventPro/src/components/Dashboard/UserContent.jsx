@@ -14,7 +14,7 @@ function UserContent() {
         <>
           <div className='w-4/5 mx-auto mt-5 text-center lg:text-left md:text-left'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-center'>
-              <img src={pesoPluma} className="rounded-xl w-400" />
+              <img src={pesoPluma} className="rounded-xl w-400 transition hover:scale-105 duration-200" />
 
               <div
                 onMouseEnter={() => setHovered1(true)}
@@ -30,7 +30,7 @@ function UserContent() {
           <div className='w-4/5 mx-auto mt-5 text-center lg:text-right md:text-right'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-center'>
               <div className='order-2 md:order-2 lg:order-2 sm:order-1 xs:order-1'>
-                <img src={concierto} className="rounded-xl w-400" />
+                <img src={concierto} className="rounded-xl w-400 transition hover:scale-105 duration-200" />
               </div>
 
               <div
@@ -49,7 +49,7 @@ function UserContent() {
         <>
           <div className='w-4/5 mx-auto mt-5 text-center lg:text-left md:text-left'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-center'>
-              <img src={pesoPluma} className="rounded-xl w-400" />
+              <img src={pesoPluma} className="rounded-xl w-400 transition hover:scale-105 duration-200" />
 
               <div
                 onMouseEnter={() => setHovered1(true)}
@@ -65,7 +65,7 @@ function UserContent() {
           <div className='w-4/5 mx-auto mt-5 text-center lg:text-right md:text-right'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-center'>
               <div className='order-2 md:order-2 lg:order-2 sm:order-1 xs:order-1'>
-                <img src={concierto} className="rounded-xl w-400" />
+                <img src={concierto} className="rounded-xl w-400 transition hover:scale-105 duration-200" />
               </div>
 
               <div
