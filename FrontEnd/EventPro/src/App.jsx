@@ -12,6 +12,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Eventos from "./Views/Eventos";
 import Boletos from "./Views/Boletos";
 import Solicitud from "./Views/Solicitud";
+import AdminPagos from "./Views/AdminPagos";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/eventos" element={<Eventos />} />
             <Route path="/boletos" element={<Boletos />} />
             <Route path="/solicitud" element={<Solicitud />} />
+            <Route path="/adminPagos" element={<AdminPagos />} />
           </Route>
         </Routes>
       </Router>

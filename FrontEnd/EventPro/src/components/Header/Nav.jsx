@@ -11,7 +11,7 @@ const NavLinks = ({ categories, handleLogout, setCategories }) => {
       )
     );
   };
-
+  
   return (
     <>
       {categories.map((category, index) => (
@@ -53,6 +53,7 @@ const Nav = () => {
             { name: "Home", to: "/dashboard", active: false },
             { name: "Solicitudes", to: "/solicitud", active: false },
             { name: "Boletos", to: "/boletos", active: false },
+            { name: "Pagos", to: "/AdminPagos", active: false },
             { name: "Usuarios", to: "/adminUsers", active: false },
             { name: "LogOut", to: "/", active: false },
           ];

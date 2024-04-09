@@ -22,12 +22,19 @@ const Footer = () => {
           >
             Figma
           </a>
-          <a
-            href="#"
-            className="text-secondary-700 dark:text-secondary-50 hover:text-blue-800 hover:underline"
-          >
-            Instagram
-          </a>
+          <span className="relative group">
+            <a
+              className="text-secondary-700 dark:text-secondary-50 hover:text-blue-800 hover:underline hover:cursor-pointer"
+            >
+              Contacto
+            </a>
+            <span className="absolute z-10 bg-primary-900 text-white text-md rounded-lg py-1 px-2 -top-10 left-1/2 transform -translate-x-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              Eventpro@gmail.com
+              <svg className="absolute text-primary-900 h-2 top-full left-1/2 transform -translate-x-1/2" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve" fill="currentColor">
+                <polygon className="fill-current" points="0,0 127.5,127.5 255,0"/>
+              </svg>
+            </span>
+          </span>
         </div>
       </div>
     </footer>
