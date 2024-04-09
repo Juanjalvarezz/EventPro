@@ -84,16 +84,19 @@ const Switch = () => {
       <label
         for="mode-switch"
         className={
-          (theme === "dark"
-            ? "bg-opacity-70 bg-secondary-700"
-            : "bg-secondary-200 bg-opacity-50") +
-          " inline-flex relative border rounded-full p-2 transition-colors duration-300 ease-in-out"
+          "dark:bg-opacity-70 dark:bg-secondary-700 bg-secondary-200 bg-opacity-50 inline-flex relative border rounded-full p-2 transition-colors duration-300 ease-in-out"
         }
       >
         <i
-          className={"dark:text-transparent text-yellow-400 fas fa-sun mr-2 transition-colors duration-300 ease-in-out"}
+          className={
+            "dark:text-transparent translate-x-0 dark:translate-x-4 text-yellow-400 dark:opacity-0 opacity-100 fas fa-sun mr-2 transition-all duration-300 ease-in-out"
+          }
         />
-        <i className={"dark:text-blue-400 text-transparent fas fa-moon ml-2 transition-colors duration-300 ease-in-out"} />
+        <i
+          className={
+            "dark:text-blue-400 translate-x-[-1rem] dark:translate-x-0 dark:opacity-100 opacity-0 text-transparent fas fa-moon ml-2 transition-all duration-300 ease-in-out"
+          }
+        />
       </label>
     </>
   );
