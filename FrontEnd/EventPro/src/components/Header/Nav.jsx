@@ -1,7 +1,9 @@
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import Modal from 'react-modal';
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import cd from '/cd.png';
 
 const NavLinks = ({ categories, handleLogout, setCategories }) => {
   const handleClick = (category) => {
@@ -40,7 +42,7 @@ const NavLinks = ({ categories, handleLogout, setCategories }) => {
 const Switch = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : ""
-  ); //Tema predeterminado
+  );
   useEffect(() => {
     if (!localStorage.getItem("theme")) {
       setTheme("dark");
@@ -82,18 +84,18 @@ const Switch = () => {
         checked={theme === "dark" ? true : false}
       />
       <label
-        for="mode-switch"
+        htmlFor="mode-switch"
         className={
           (theme === "dark"
-            ? "bg-opacity-70 bg-secondary-700"
+            ? "bg-opacity-70 bg-secondary-700 border-4 border-primary-700 -mt-2"
             : "bg-secondary-200 bg-opacity-50") +
-          " inline-flex relative border rounded-full p-2 transition-colors duration-300 ease-in-out"
+          " inline-flex relative rounded-full p-2 transition-colors duration-300 ease-in-out "
         }
       >
         <i
-          className={"dark:text-transparent text-yellow-400 fas fa-sun mr-2 transition-colors duration-300 ease-in-out"}
+          className={"dark:text-transparent text-gray-200 fas fa-sun mr-2 transition-colors duration-300 ease-in-out"}
         />
-        <i className={"dark:text-blue-400 text-transparent fas fa-moon ml-2 transition-colors duration-300 ease-in-out"} />
+        <i className={"dark:text-primary-500 text-transparent fas fa-moon ml-2 transition-colors duration-300 ease-in-out"} />
       </label>
     </>
   );
@@ -101,10 +103,9 @@ const Switch = () => {
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { logout, user, isAuthenticated } = useAuth();
 
-  const { logout, user, isAuthenticated } = useAuth(); // Obtiene el rol del usuario y el estado de autenticación desde el contexto de autenticación
-
-  // Determina las categorías de navegación según el estado de autenticación y el rol del usuario
   const getCategories = () => {
     if (isAuthenticated) {
       switch (user.role) {
@@ -115,7 +116,7 @@ const Nav = () => {
             { name: "Boletos", to: "/boletos", active: false },
             { name: "Pagos", to: "/AdminPagos", active: false },
             { name: "Usuarios", to: "/adminUsers", active: false },
-            { name: "LogOut", to: "/", active: false },
+            { name: "LogOut", to: "/dashboard", active: false },
           ];
         case "promotor":
           return [
@@ -123,20 +124,19 @@ const Nav = () => {
             { name: "Solicitud", to: "/solicitud", active: false },
             { name: "Perfil", to: "/profile", active: false },
             { name: "AboutUs", to: "/aboutUs", active: false },
-            { name: "LogOut", to: "/", active: false },
+            { name: "LogOut", to: "/dashboard", active: false },
           ];
-        default: // Caso de usuario normal
+        default:
           return [
             { name: "Home", to: "/dashboard", active: false },
             { name: "Eventos", to: "/eventos", active: false },
             { name: "Boletos", to: "/boletos", active: false },
             { name: "Perfil", to: "/profile", active: false },
             { name: "AboutUs", to: "/aboutUs", active: false },
-            { name: "LogOut", to: "/", active: false },
+            { name: "LogOut", to: "/dashboard", active: false },
           ];
       }
     } else {
-      // Si el usuario no está autenticado, muestra las opciones de navegación para usuarios no autenticados
       return [
         { name: "Home", to: "/", active: false },
         { name: "Login", to: "/login", active: false },
@@ -152,37 +152,28 @@ const Nav = () => {
     setIsOpen(!isOpen);
   };
 
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <>
       <nav className="flex w-1/3 justify-end">
         <div className="inline-flex md:hidden mx-3 items-center cursor-pointer">
           <Switch />
         </div>
-        {/* <label className="inline-flex md:hidden mx-3 items-center cursor-pointer">
-          <input
-            type="checkbox"
-            onChange={toggleDarkMode}
-            className="sr-only peer"
-            checked={theme === "dark" ? true : false}
-          />
-          <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-900 dark:peer-focus:ring-primary-700 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
-        </label> */}
+
         <div className="hidden w-full justify-end md:flex text-xl">
           <Switch />
-          {/* <label className="inline-flex mx-3 items-center cursor-pointer">
-            <input
-              type="checkbox"
-              onChange={toggleDarkMode}
-              className="sr-only peer"
-              checked={theme === "dark" ? true : false}
-            />
-            <div className="relative w-11 h-6 bg-secondary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-900 dark:peer-focus:ring-primary-700 rounded-full peer dark:bg-secondary-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-secondary-50 after:border-secondary-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-secondary-600 peer-checked:bg-secondary-600"></div>
-          </label> */}
 
           <div className="lg:text-xl md:text-md sm:text-sm">
             <NavLinks
               categories={categories}
-              handleLogout={logout}
+              handleLogout={openModal}
               setCategories={setCategories}
             />
           </div>
@@ -195,11 +186,47 @@ const Nav = () => {
 
       {isOpen && (
         <div className="flex basis-full ml-10 flex-col items-center text-center space-y-1 mb-5 p-2 ">
-          {" "}
-          {/* Para el menu abierto */}
-          <NavLinks categories={categories} handleLogout={logout} />
+          <NavLinks categories={categories} handleLogout={openModal} />
         </div>
       )}
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Logout Modal"
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+          },
+          content: {
+            backgroundColor: 'transparent', 
+            border: 'none', 
+          }
+        }}
+      >
+        <div className="text-center bg-primary-500 dark:bg-primary-700 w-fit p-8 rounded-2xl mx-auto">
+        <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
+          <h1 className="text-2xl text-white font-bold">¿Estás seguro de que quieres cerrar sesión?</h1>
+          <h2 className="text-xl text-secondary-700 dark:text-secondary-200  font-bold">Luego tendras que ingresar tus datos de nuevo</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-5 md:gap-3 items-center">
+            <button
+              onClick={() => {
+                logout();
+                closeModal();
+              }}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 lg:text-xl md:text-lg sm:text-lg"
+            >
+              Confirmar Logout
+            </button>
+            <button
+              onClick={closeModal}
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4 lg:text-xl md:text-lg sm:text-lg"
+            >
+              Cancelar Logout
+            </button>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
