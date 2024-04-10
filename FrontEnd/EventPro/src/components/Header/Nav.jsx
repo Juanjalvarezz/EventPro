@@ -87,15 +87,15 @@ const Switch = () => {
         htmlFor="mode-switch"
         className={
           (theme === "dark"
-            ? "bg-opacity-70 bg-secondary-700"
+            ? "bg-opacity-70 bg-secondary-700 border-4 border-primary-700 -mt-2"
             : "bg-secondary-200 bg-opacity-50") +
-          " inline-flex relative border rounded-full p-2 transition-colors duration-300 ease-in-out"
+          " inline-flex relative rounded-full p-2 transition-colors duration-300 ease-in-out "
         }
       >
         <i
-          className={"dark:text-transparent text-yellow-400 fas fa-sun mr-2 transition-colors duration-300 ease-in-out"}
+          className={"dark:text-transparent text-gray-200 fas fa-sun mr-2 transition-colors duration-300 ease-in-out"}
         />
-        <i className={"dark:text-blue-400 text-transparent fas fa-moon ml-2 transition-colors duration-300 ease-in-out"} />
+        <i className={"dark:text-primary-500 text-transparent fas fa-moon ml-2 transition-colors duration-300 ease-in-out"} />
       </label>
     </>
   );
@@ -204,7 +204,7 @@ const Nav = () => {
           }
         }}
       >
-        <div className="text-center bg-primary-500 dark:bg-primary-700 w-fit p-8 rounded-2xl mx-auto">
+        <div className="text-center bg-primary-00 dark:bg-primary-700 w-fit p-8 rounded-2xl mx-auto">
         <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
           <h1 className="text-2xl text-white font-bold">¿Estás seguro de que quieres cerrar sesión?</h1>
           <h2 className="text-xl text-secondary-700 dark:text-secondary-200  font-bold">Luego tendras que ingresar tus datos de nuevo</h2>
