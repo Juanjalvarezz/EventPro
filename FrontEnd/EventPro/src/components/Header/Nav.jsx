@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import { Menu, X } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
-import cd from '/cd.png';
+
+const cd = "/cd.png";
 
 const NavLinks = ({ categories, handleLogout, setCategories }) => {
   const handleClick = (category) => {
@@ -84,18 +85,21 @@ const Switch = () => {
         checked={theme === "dark" ? true : false}
       />
       <label
-        htmlFor="mode-switch"
+        for="mode-switch"
         className={
-          (theme === "dark"
-            ? "bg-opacity-70 bg-secondary-700 border-4 border-primary-700 -mt-2"
-            : "bg-secondary-200 bg-opacity-50") +
-          " inline-flex relative rounded-full p-2 transition-colors duration-300 ease-in-out "
+          "dark:bg-secondary-700 border-4 border-primary-700 dark:border-primary-300 -mt-2 bg-secondary-200 bg-opacity-50 inline-flex relative rounded-full p-2 transition-colors duration-300 ease-in-out "
         }
       >
         <i
-          className={"dark:text-transparent text-gray-200 fas fa-sun mr-2 transition-colors duration-300 ease-in-out"}
+          className={
+            "dark:text-transparent dark:translate-x-4 text-gray-200 dark:opacity-0 fas fa-sun mr-2 transition-all duration-300 ease-in-out"
+          }
         />
-        <i className={"dark:text-primary-500 text-transparent fas fa-moon ml-2 transition-colors duration-300 ease-in-out"} />
+        <i
+          className={
+            "dark:text-primary-500 dark:translate-x-0 dark:opacity-100 opacity-0 translate-x-[-1rem] text-transparent fas fa-moon ml-2 transition-all duration-300 ease-in-out"
+          }
+        />
       </label>
     </>
   );
@@ -196,18 +200,25 @@ const Nav = () => {
         contentLabel="Logout Modal"
         style={{
           overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
           },
           content: {
-            backgroundColor: 'transparent', 
-            border: 'none', 
-          }
+            backgroundColor: "transparent",
+            border: "none",
+          },
         }}
       >
         <div className="text-center bg-primary-00 dark:bg-primary-700 w-fit p-8 rounded-2xl mx-auto">
-        <img src={cd} className="animate-spin w-40 h-auto object-cover mx-auto mb-5" />
-          <h1 className="text-2xl text-white font-bold">¿Estás seguro de que quieres cerrar sesión?</h1>
-          <h2 className="text-xl text-secondary-700 dark:text-secondary-200  font-bold">Luego tendras que ingresar tus datos de nuevo</h2>
+          <img
+            src={cd}
+            className="animate-spin w-40 h-auto object-cover mx-auto mb-5"
+          />
+          <h1 className="text-2xl text-white font-bold">
+            ¿Estás seguro de que quieres cerrar sesión?
+          </h1>
+          <h2 className="text-xl text-secondary-700 dark:text-secondary-200  font-bold">
+            Luego tendras que ingresar tus datos de nuevo
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-5 md:gap-3 items-center">
             <button
               onClick={() => {

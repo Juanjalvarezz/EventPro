@@ -1,11 +1,12 @@
 import React from "react";
-import Logo from "/Logo.png";
+
+const logo = "Logo.png"
 
 const Footer = () => {
   return (
     <footer className="bg-secondary-250 text-center text-secondary-900 dark:text-secondary-50 dark:bg-neutral-900 lg:text-left md:flex md:justify-center md:items-center md:flex-row flex-col mt-8 pb-5">
       <div className="flex justify-center items-center">
-        <img src={Logo} alt="Logo" className="w-36 mr-4 animate-pulse" />
+        <img src={logo} alt="Logo" className="w-36 mr-4 animate-pulse" />
       </div>
       <div className="mt-4 md:mt-0 md:ml-4">
         <p>&copy; 2024 EventPro. Todos los derechos reservados.</p>
@@ -23,15 +24,18 @@ const Footer = () => {
             Figma
           </a>
           <span className="relative group">
-            <a
-              className="text-secondary-700 dark:text-secondary-50 hover:text-blue-800 hover:underline hover:cursor-pointer"
-            >
+            <a className="text-secondary-700 dark:text-secondary-50 hover:text-blue-800 hover:underline hover:cursor-pointer">
               Contacto
             </a>
             <span className="absolute z-10 bg-primary-900 text-white text-md rounded-lg py-1 px-2 -top-10 left-1/2 transform -translate-x-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               Eventpro@gmail.com
-              <svg className="absolute text-primary-900 h-2 top-full left-1/2 transform -translate-x-1/2" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve" fill="currentColor">
-                <polygon className="fill-current" points="0,0 127.5,127.5 255,0"/>
+              <svg
+                width="400"
+                height="400"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                xlinkHref="http://www.w3.org/1999/xlink"
+              >
+                <circle cx="100" cy="100" r="50" strokeWidth="5" />
               </svg>
             </span>
           </span>
