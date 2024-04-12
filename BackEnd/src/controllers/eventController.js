@@ -110,4 +110,23 @@ const getEventsStatus = async (req, res) => {
   }
 }
 
-module.exports = { createEvent, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };
+const getAllEvents = async (req, res) => {
+  try {
+    const events = await Event.find();
+
+    if (!events || events.length === 0) {
+      return res.status(404).json({ message: `No se encontraron eventos en la base de datos` })
+    }
+
+    res.status(200).json({
+      message: 'Exitoso',
+      status: 200,
+      events
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error del servidor al buscar eventos" });
+  }
+}
+
+module.exports = { createEvent, getAllEvents, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };

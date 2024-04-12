@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   loginRequest,
   verifyRequest,
@@ -6,6 +5,7 @@ import {
   updateRequest,
 } from "../utils/authRequest.js";
 import { createContext, useState, useContext, useEffect } from "react";
+import instance from '../utils/axios.js';
 
 export const AuthContext = createContext();
 
@@ -47,10 +47,14 @@ export const AuthProvider = ({ children }) => {
       //Guardar el token en localStorage para mantener sesion iniciada
       localStorage.setItem("token", res.data.token);
     } catch (error) {
-      console.log(error.response.data.message);
-      setErrors(error.response.data.message);
-      logout();
-      return error;
+      if (error.code === "ERR_NETWORK") {
+        setErrors("Error en conexión con el servidor")
+      } else {
+        console.log(error.response.data.message);
+        setErrors(error.response.data.message)
+        logout();
+        return error;      
+      }
     } finally {
       setLoading(false);
     }
@@ -97,6 +101,11 @@ export const AuthProvider = ({ children }) => {
       verifyToken(token);
     }
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    instance.defaults.headers['Authorization'] = token ? `${token}` : '';
+  }, [isAuthenticated])
 
   const verifyToken = async (token) => {
     try {

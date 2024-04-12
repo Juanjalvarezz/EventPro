@@ -19,3 +19,8 @@ export const deleteEvent = (id) => {
   const res = axios.delete(`/events/delete/${id}`);
   return res;
 }
+
+export const getAllEvents = () => {
+  const res = axios.get(`/events`);
+  return res;
+}

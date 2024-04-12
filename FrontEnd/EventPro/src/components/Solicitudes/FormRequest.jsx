@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { createEvent } from '../../utils/eventRequest';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Boleto from './Boleto';
 
-const FormRequest = () => {
+const FormRequest = ({ accepted }) => {
   const { user } = useAuth();
   const [aprobando, setAprobando] = useState(false);
+  const [ticketsList, setTicketsList] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     date: '',
@@ -15,8 +17,15 @@ const FormRequest = () => {
     description: '',
     images: '',
     status: 'Por aprobar',
-    tickets: [],
+    tickets: ticketsList,
   });
+
+  useEffect(() => {
+    if (accepted) {
+      setFormData(accepted)
+      setAprobando(true)
+    }
+  }, [accepted])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -124,6 +133,7 @@ const FormRequest = () => {
             value={formData.time}
             onChange={handleChange}
           />
+
         )}
         <textarea
           type="text"
@@ -135,17 +145,23 @@ const FormRequest = () => {
           required // Campo requerido
         />
         {user.role === 'admin' && aprobando && (
-          <select 
-            className='p-2 bg-secondary-50 text-secondary-900 border rounded-xl' 
-            name="estatus" 
-            id="estatus" 
-            value={formData.estatus} 
-            onChange={handleChange}
-          >
-            <option value="Por aprobar">Por aprobar</option>
-            <option value="Disponible">Disponible</option>
-            <option value="Finalizado">Finalizado</option>
-          </select>
+          <>
+            <select
+              className='p-2 bg-secondary-50 text-secondary-900 border rounded-xl'
+              name="estatus"
+              id="estatus"
+              value={formData.estatus}
+              onChange={handleChange}
+            >
+              <option value="Por aprobar">Por aprobar</option>
+              <option value="Disponible">Disponible</option>
+              <option value="Finalizado">Finalizado</option>
+            </select>
+            <Boleto 
+              ticketsList={ticketsList}
+              setTicketsList={setTicketsList}
+            />
+          </>
         )}
         <h2 className='md:col-span-2 text-secondary-900 text-center'>Agrega una Imagen para mostrar el Evento :</h2>
         <input

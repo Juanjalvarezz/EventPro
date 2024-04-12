@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Loading from "../Animation/Loading";
 import ModalConfirm from '../ModalConfirm';
 
-function Solicitudes() {
+function Solicitudes({ setAccepted }) {
   const { user } = useAuth();
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +21,10 @@ function Solicitudes() {
       setIsLoading(false);
     }
   };
+
+  const acceptEvent = (event) => {
+    setAccepted(event)
+  }
 
   const fetchEventRequest = async () => {
     try {
@@ -103,7 +107,7 @@ function Solicitudes() {
                 </div>
                 <div className="flex justify-center items-center p-2 rounded-b-3xl gap-4 w-full bg-primary-250">
                   {user.role === 'admin' && (
-                    <button className="bg-blue-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl">Aceptar</button>
+                    <button className="bg-blue-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl" onClick={() => acceptEvent}>Aceptar</button>
                   )}
                   <button
                     className="bg-red-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl"

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Loading from '../Animation/Loading';
 
-function Pagos() {
+function Pagos({ ticket }) {
   const [selectedPayment, setSelectedPayment] = useState('PagoMovil');
 
   const handlePaymentChange = (event) => {
