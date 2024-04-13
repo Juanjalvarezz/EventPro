@@ -16,7 +16,7 @@ const EventCard = ({ events, userRole }) => {
                 <div className="text-left">
                   <p className="sm:text-lg md:text-lg lg:text-xl">Ubicación: {event.place}</p>
                   <p className="sm:text-lg md:text-lg lg:text-xl">Fecha: {new Date(event.date).toLocaleDateString()}</p>
-                  <p className="sm:text-lg md:text-lg lg:text-xl">Hora: {new Date(event.date).getHours() + ':' + new Date(event.date).getMinutes()}</p>
+                  <p className="sm:text-lg md:text-lg lg:text-xl">Hora: {new Date(event.date).toLocaleTimeString('en-US')}</p>
                   <div className="flex justify-center md:justify-start">
                     <p className="text-sm sm:text-lg md:text-lg lg:text-xl">Estatus: </p>
                     <p className={`ml-2 ${event.status === 'Disponible' ? 'text-green-600' : 'text-amber-500'} text-sm sm:text-lg md:text-lg lg:text-xl`}>{event.status}</p>

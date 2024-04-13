@@ -37,6 +37,43 @@ const createEvent = async (req, res) => {
   }
 }
 
+const updateEvent = async (req, res) => {
+  try {
+    const user = req.user;
+
+    if (user.role !== 'admin') {
+      return res.status(401).json({ message: 'No estás autorizado para editar eventos. Contáctate con el administrador' });
+    }
+
+    const id = req.params.id;
+
+    const { name, date, time, place, description, images, status, promotorID, tickets } = req.body;
+
+    const updateEvent = await Event.findByIdAndUpdate(id, {
+      name,
+      date: `${time ? new Date(date + 'T' + time) : date}`,
+      place,
+      description,
+      image: images,
+      status,
+      promotorID,
+      tickets,
+    }, { new: true });
+
+    if (!updateEvent) {
+      return next(new createError("Evento no encontrado", 404));
+    }
+
+    res.status(201).json({
+      status: 200,
+      message: 'Evento modificado con éxito',
+      updateEvent,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Error al editar el evento" })
+  }
+}
+
 const deleteEvent = async (req, res) => {
   const id = req.params.id;
   try {
@@ -90,9 +127,9 @@ const getEventsStatus = async (req, res) => {
     const status = req.params.filter;
 
     if (!status && status !== 'Disponible' && status !== 'Por aprobar' && status !== 'Finalizado') {
-      return res.status(400).json({ message: "No se ha seleccionado ningun estatus válido para consultar "});
+      return res.status(400).json({ message: "No se ha seleccionado ningun estatus válido para consultar " });
     }
-    
+
     const events = await Event.find({ status: status }).populate('promotorID', 'name email');
 
     if (!events || events.length === 0) {
@@ -129,4 +166,4 @@ const getAllEvents = async (req, res) => {
   }
 }
 
-module.exports = { createEvent, getAllEvents, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };
+module.exports = { createEvent, updateEvent, getAllEvents, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };

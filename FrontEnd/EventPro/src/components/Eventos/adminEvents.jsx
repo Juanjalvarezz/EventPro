@@ -1,19 +1,37 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../utils/eventRequest';
 import ModalConfirm from '../ModalConfirm';
 
 
 export const UpdateButton = ({ event }) => {
+  const navigate = useNavigate();
+  /*
+  const location = {
+    pathname: '/solicitud',
+  }
+  <Link className="bg-blue-500 w-36 rounded-xl text-center p-2 sm:text-md md:text-lg lg:text-xl" to={location} replace>Editar</Link>
+  */
   return (
     <>
-      <Link className="bg-blue-500 w-36 rounded-xl text-center p-2 sm:text-md md:text-lg lg:text-xl" to={{ pathname: "/solicitudes", state: { event, isEditing: true } }}>Editar</Link>
+      <button
+        className='bg-blue-500 w-36 rounded-xl text-center p-2 sm:text-md md:text-lg lg:text-xl'
+        onClick={() => navigate("/solicitud", {
+          replace: true,
+          state: {
+            event,
+            isEditing: true
+          }
+        })}
+      >
+        Editar
+      </button>
     </>
   )
 }
 
 export const DeleteButton = ({ event }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState({});
 
   const handleOpen = (eventId) => {
     console.log('presionando...')
@@ -41,10 +59,10 @@ export const DeleteButton = ({ event }) => {
 
   return (
     <>
-      <button 
+      <button
         className="bg-red-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl"
         onClick={() => handleOpen(event.id)}>
-          Eliminar
+        Eliminar
       </button>
       <ModalConfirm
         isOpen={isOpen[event._id]}

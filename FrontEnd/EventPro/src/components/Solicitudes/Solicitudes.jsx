@@ -55,6 +55,7 @@ function Solicitudes({ setAccepted }) {
     }
   }, []);
 
+
   const handleOpenModal = (eventId) => {
     setIsOpenModal(prevState => ({
       ...prevState,

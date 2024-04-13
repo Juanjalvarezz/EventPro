@@ -10,9 +10,14 @@ import FormRequest from '../components/Solicitudes/FormRequest'
 import Solicitudes from '../components/Solicitudes/Solicitudes';
 import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 import { toast, ToastContainer } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 
 function Solicitud() {
   const { user } = useAuth();
+  const location = useLocation();
+  const editingEvent = location.state?.event;
+  const isEditing = location.state?.isEditing;
+  const [editing, setEditing] = useState(false);
   const [accepted, setAccepted] = useState(null);
   const navigate = useNavigate();
 
@@ -25,6 +30,15 @@ function Solicitud() {
       }, 2000);
     }
   }, [accepted])
+
+  useEffect(() => {
+    //verifcar si se va a editar el evento
+    if (!isEditing) {
+      return setEditing(false);
+    }
+    setEditing(true);
+  }, [isEditing, location])
+
 
   useEffect(() => {
     if (user.role !== 'promotor' && user.role !== 'admin') {
@@ -40,10 +54,15 @@ function Solicitud() {
         <div className='flex justify-center items-center flex-col w-full'>
           <FormRequest
             accepted={accepted}
+            editingEvent={editingEvent}
+            editing={editing}
+            setEditing={setEditing}
           />
-          <Solicitudes
-            setAccepted={setAccepted}
-          />
+          {!editing && (
+            <Solicitudes
+              setAccepted={setAccepted}
+            />
+          )}
         </div>
       </AnimatedPage>
       <Footer />

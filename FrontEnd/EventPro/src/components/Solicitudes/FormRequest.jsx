@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { createEvent } from '../../utils/eventRequest';
+import { createEvent, updateEvent } from '../../utils/eventRequest';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Boleto from './Boleto';
 
-const FormRequest = ({ accepted }) => {
+const FormRequest = ({ accepted, editingEvent, editing, setEditing }) => {
   const { user } = useAuth();
   const [aprobando, setAprobando] = useState(false);
   const [ticketsList, setTicketsList] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
-    date: '',
-    time: '',
+    date: new Date(Date.now()).toISOString().split('T')[0],
+    time: '00:00',
     place: '',
     description: '',
     images: '',
@@ -22,20 +22,63 @@ const FormRequest = ({ accepted }) => {
 
   useEffect(() => {
     if (accepted) {
-      setFormData(accepted)
-      setAprobando(true)
+      //Formatear la fecha y la hora
+      const localDate = new Date(accepted.date).toISOString().split('T')[0];
+      const localTime = new Date(accepted.date).toLocaleTimeString('en-US', { hour12: false });
+
+      setFormData({
+        name: accepted.name,
+        date: localDate,
+        time: localTime || '',
+        place: accepted.place,
+        description: accepted.description,
+        images: accepted.images,
+        status: accepted.status,
+        tickets: [],
+      });
+      setAprobando(true);
     }
-  }, [accepted])
+  }, [accepted]);
+
+  useEffect(() => {
+    if (editing) {
+      if (!editingEvent) {
+        return toast.error("No se ha encontrado el evento a editar");
+      }
+      //Formatear la fecha y la hora
+      const localDate = new Date(editingEvent.date).toISOString().split('T')[0];
+      const localTime = new Date(editingEvent.date).toLocaleTimeString('en-US', { hour12: false });
+
+      setFormData({
+        name: editingEvent.name,
+        date: localDate,
+        time: localTime || '',
+        place: editingEvent.place,
+        description: editingEvent.description,
+        images: editingEvent.image,
+        status: editingEvent.status,
+        tickets: [],
+      });
+      console.log(editingEvent)
+      setEditing(true);
+    }
+  }, [editing])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await createEvent(formData);
-      toast.success(res.data.message);
+      if (editing && editingEvent) {
+        formData['promotorID'] = editingEvent.promotorID;
+        const res = await updateEvent(editingEvent._id, formData)
+        toast.success(res.data.message);
+      } else {
+        const res = await createEvent(formData);
+        toast.success(res.data.message);
+      }
       setFormData({
         name: '',
-        date: '',
-        time: '',
+        date: new Date(Date.now()).toISOString().split('T')[0],
+        time: '00:00',
         place: '',
         description: '',
         images: '',
@@ -96,7 +139,7 @@ const FormRequest = ({ accepted }) => {
   return (
     <div>
       <ToastContainer />
-      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat text-3xl w-lg font-black text-center p-3 rounded-xl text-white'>Cargar un Evento</h2>
+      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat text-3xl w-lg font-black text-center p-3 rounded-xl text-white'>{editing ? 'Editar Evento' : 'Cargar un Evento'}</h2>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto mt-5 p-5 lg:p-8 lg:rounded-2xl rounded-xl bg-primary-350 flex flex-col gap-3">
         <input
           type="text"
@@ -144,7 +187,7 @@ const FormRequest = ({ accepted }) => {
           className="p-2 bg-secondary-50 text-secondary-900 border rounded-xl md:col-span-2"
           required // Campo requerido
         />
-        {user.role === 'admin' && aprobando && (
+        {user.role === 'admin' && aprobando || editing && (
           <>
             <select
               className='p-2 bg-secondary-50 text-secondary-900 border rounded-xl'
@@ -157,20 +200,22 @@ const FormRequest = ({ accepted }) => {
               <option value="Disponible">Disponible</option>
               <option value="Finalizado">Finalizado</option>
             </select>
-            <Boleto 
+            <Boleto
               ticketsList={ticketsList}
               setTicketsList={setTicketsList}
             />
           </>
         )}
         <h2 className='md:col-span-2 text-secondary-900 text-center'>Agrega una Imagen para mostrar el Evento :</h2>
-        <input
-          type="file"
-          className="p-2 bg-secondary-50 text-secondary-900 border rounded w-full hover:bg-gray-300 focus:outline-none focus:bg-white md:col-span-2"
-          name="images"
-          onChange={handleImageChange}
-          required
-        />
+        {!aprobando && !editing && (
+          <input
+            type="file"
+            className="p-2 bg-secondary-50 text-secondary-900 border rounded w-full hover:bg-gray-300 focus:outline-none focus:bg-white md:col-span-2"
+            name="images"
+            onChange={handleImageChange}
+            required
+          />
+        )}
 
         <button
           type="submit"
