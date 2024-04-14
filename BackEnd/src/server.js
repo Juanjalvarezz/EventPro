@@ -7,6 +7,7 @@ require('./config/database');
 // Importar Rutas
 const authRouter = require('./routes/userRoutes');
 const eventRouter = require('./routes/eventRoutes');
+const paymentRouter = require('./routes/paymentRoutes');
 
 const app = express();
 // PUERTO
@@ -24,6 +25,7 @@ app.use(express.json());
 //Rutas
 app.use('/api/auth', authRouter);
 app.use('/api/events', eventRouter);
+app.use('/api/payments', paymentRouter);
 
 // Global Error
 app.use((err, req, res, next) => {
