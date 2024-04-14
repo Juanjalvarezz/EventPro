@@ -122,7 +122,7 @@ const Nav = () => {
             { name: "Boletos", to: "/boletos", active: false },
             { name: "Pagos", to: "/AdminPagos", active: false },
             { name: "Usuarios", to: "/adminUsers", active: false },
-            { name: "LogOut", to: "/dashboard", active: false },
+            { name: "LogOut", to: "", active: false },
           ];
         case "promotor":
           return [
@@ -130,7 +130,7 @@ const Nav = () => {
             { name: "Solicitud", to: "/solicitud", active: false },
             { name: "Perfil", to: "/profile", active: false },
             { name: "AboutUs", to: "/aboutUs", active: false },
-            { name: "LogOut", to: "/dashboard", active: false },
+            { name: "LogOut", to: "", active: false },
           ];
         default:
           return [
@@ -139,7 +139,7 @@ const Nav = () => {
             { name: "Boletos", to: "/boletos", active: false },
             { name: "Perfil", to: "/profile", active: false },
             { name: "AboutUs", to: "/aboutUs", active: false },
-            { name: "LogOut", to: "/dashboard", active: false },
+            { name: "LogOut", to: "", active: false },
           ];
       }
     } else {
