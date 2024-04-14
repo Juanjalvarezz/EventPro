@@ -32,8 +32,44 @@ const createEvent = async (req, res) => {
     });
   } catch (error) {
     console.log('Error al crear el evento: ', error);
-    res.status(500).json({ message: "Error al crear el evento" })
-    next(error);
+    return res.status(500).json({ message: "Error al crear el evento" });
+  }
+}
+
+const updateEvent = async (req, res) => {
+  try {
+    const user = req.user;
+
+    if (user.role !== 'admin') {
+      return res.status(401).json({ message: 'No estás autorizado para editar eventos. Contáctate con el administrador' });
+    }
+
+    const id = req.params.id;
+
+    const { name, date, time, place, description, images, status, promotorID, tickets } = req.body;
+
+    const updateEvent = await Event.findByIdAndUpdate(id, {
+      name,
+      date: `${time ? new Date(date + 'T' + time) : date}`,
+      place,
+      description,
+      image: images,
+      status,
+      promotorID,
+      tickets,
+    }, { new: true });
+
+    if (!updateEvent) {
+      return next(new createError("Evento no encontrado", 404));
+    }
+
+    res.status(201).json({
+      status: 200,
+      message: 'Evento modificado con éxito',
+      updateEvent,
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Error al editar el evento" })
   }
 }
 
@@ -90,9 +126,9 @@ const getEventsStatus = async (req, res) => {
     const status = req.params.filter;
 
     if (!status && status !== 'Disponible' && status !== 'Por aprobar' && status !== 'Finalizado') {
-      return res.status(400).json({ message: "No se ha seleccionado ningun estatus válido para consultar "});
+      return res.status(400).json({ message: "No se ha seleccionado ningun estatus válido para consultar " });
     }
-    
+
     const events = await Event.find({ status: status }).populate('promotorID', 'name email');
 
     if (!events || events.length === 0) {
@@ -110,4 +146,23 @@ const getEventsStatus = async (req, res) => {
   }
 }
 
-module.exports = { createEvent, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };
+const getAllEvents = async (req, res) => {
+  try {
+    const events = await Event.find();
+
+    if (!events || events.length === 0) {
+      return res.status(404).json({ message: `No se encontraron eventos en la base de datos` })
+    }
+
+    res.status(200).json({
+      message: 'Exitoso',
+      status: 200,
+      events
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error del servidor al buscar eventos" });
+  }
+}
+
+module.exports = { createEvent, updateEvent, getAllEvents, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };

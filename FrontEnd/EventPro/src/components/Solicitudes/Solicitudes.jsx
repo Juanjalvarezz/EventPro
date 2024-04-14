@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Loading from "../Animation/Loading";
 import ModalConfirm from '../ModalConfirm';
 
-function Solicitudes() {
+function Solicitudes({ setAccepted, updateEvents, setUpdateEvents }) {
   const { user } = useAuth();
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,9 +18,14 @@ function Solicitudes() {
     } catch (error) {
       console.log(error);
     } finally {
+      setUpdateEvents(false);
       setIsLoading(false);
     }
   };
+
+  const acceptEvent = (event) => {
+    setAccepted(event)
+  }
 
   const fetchEventRequest = async () => {
     try {
@@ -30,6 +35,7 @@ function Solicitudes() {
     } catch (error) {
       console.log(error);
     } finally {
+      setUpdateEvents(false);
       setIsLoading(false);
     }
   };
@@ -38,18 +44,27 @@ function Solicitudes() {
     try {
       const res = await deleteEvent(id);
       console.log(res);
+      setUpdateEvents(true);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    if (user.role === 'promotor') {
-      eventsByPromotor(user._id);
-    } else if (user.role === 'admin') {
+  const updateRequest = (id, role) => {
+    if (role === 'promotor') {
+      eventsByPromotor(id);
+    } else if (role === 'admin') {
       fetchEventRequest();
     }
+  }
+
+  useEffect(() => {
+    updateRequest(user._id, user.role);
   }, []);
+  
+  useEffect(() => {
+    updateRequest(user._id, user.role);
+  }, [updateEvents]);
 
   const handleOpenModal = (eventId) => {
     setIsOpenModal(prevState => ({
@@ -103,7 +118,7 @@ function Solicitudes() {
                 </div>
                 <div className="flex justify-center items-center p-2 rounded-b-3xl gap-4 w-full bg-primary-250">
                   {user.role === 'admin' && (
-                    <button className="bg-blue-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl">Aceptar</button>
+                    <button className="bg-blue-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl" onClick={() => acceptEvent(event)}>Aceptar</button>
                   )}
                   <button
                     className="bg-red-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl"

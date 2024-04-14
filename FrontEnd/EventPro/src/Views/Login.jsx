@@ -22,8 +22,12 @@ const Login = () => {
 
     setTimeout(async () => {
       await login(email, password);
-      console.log(errors);
-      toast.dismiss(toastId);
+      if (errors) {
+        console.log(errors);
+        toast.error(errors);
+      } else {
+        toast.dismiss(toastId);
+      }
     }, 2000);
   };
 
