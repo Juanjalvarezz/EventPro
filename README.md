@@ -43,6 +43,8 @@ Todos los datos de la app están alojados en una base de datos en **MongoDB** pa
 - [Tailwind](https://tailwindcss.com/): Es un framework de CSS para generar clases que sirven para agilizar el trabajo dentro del desarrollo de la interfaz de usuario.
 
 - [Lucide-react](https://lucide.dev/guide/packages/lucide-react): Es una librería de iconos de Lucida, implementado en react de manera nativa y con formatos svg.
+- 
+- [Jest](https://jestjs.io/): Se trata de un Framework de Javascript para probar el funcionamiento específico los distintos componentes de React.
 
 ## Instalación.
 
@@ -92,7 +94,7 @@ Todos los datos de la app están alojados en una base de datos en **MongoDB** pa
 `Server listen on port:  4000
 Conectado a la BD`
 
-- Inicia la aplicación con el comando `npm run preview` en la terminal FrontEnd.
+- Inicia la aplicación con el comando `npm run build` seguido de `npm run preview` en la terminal FrontEnd.
 
 - En la terminal Frontend te saldrá un mensaje que dirá: `http://localhost:3000/`.
 
