@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ModalConfirm from "../ModalConfirm";
 import { approvePayment, deletePaymentRecord } from '../../utils/paymentRequest';
 
@@ -23,7 +23,6 @@ function PaymentCard({ payment, id, setIsChanges, setErrorMessage, setSuccessMes
   const acceptPayment = async (id) => {
     try {
       const res = await approvePayment(id)
-      console.log(res);
       setSuccessMessage(res.data.message);
       setIsChanges(true);
     } catch (error) {
@@ -35,7 +34,6 @@ function PaymentCard({ payment, id, setIsChanges, setErrorMessage, setSuccessMes
   const deletePayment = async (id) => {
     try {
       const res = await deletePaymentRecord(id);
-      console.log(res)
       setSuccessMessage(res.data.message);
       setIsChanges(true);
     } catch (error) {

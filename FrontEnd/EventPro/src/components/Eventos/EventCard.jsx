@@ -39,14 +39,23 @@ const EventCard = ({ events, userRole }) => {
                     Estatus:{" "}
                   </p>
                   <p
-                    className={`ml-2 ${
-                      event.status === "Disponible"
+                    className={`ml-2 ${event.status === "Disponible"
                         ? "text-green-700"
                         : "text-amber-500"
-                    } text-sm sm:text-lg md:text-lg lg:text-xl`}
+                      } text-sm sm:text-lg md:text-lg lg:text-xl`}
                   >
                     {event.status}
                   </p>
+                </div>
+                <div className='flex flex-col justify-center items-start w-full'>
+                  <p>Boletos disponibles:</p>
+                  {event.tickets.map((ticket, index) => (
+                    <div key={index} className='flex justify-between items-center w-full'>
+                      <p>{ticket.type}:</p>
+                      <p>${ticket.rate}</p>
+                      <p>{`(${ticket.available} disp.)`}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
