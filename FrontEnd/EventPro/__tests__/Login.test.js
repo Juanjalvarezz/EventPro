@@ -4,10 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthProvider } from '../src/contexts/AuthContext';
 import Login from '../src/Views/Login';
 import { toast } from 'react-toastify';
-import axios from 'axios';
 
-// Mockea axios y react-toastify
-jest.mock('axios');
 jest.mock('react-toastify', () => {
   const actualToast = jest.requireActual('react-toastify');
   return {
@@ -22,9 +19,8 @@ jest.mock('react-toastify', () => {
 
 describe('Login Component', () => {
   test('El toast de éxito se muestra después de iniciar sesión', async () => {
-    axios.post.mockResolvedValue({ data: { token: 'fake-token' } });
 
-    const { getByLabelText, getByText } = render(
+    const { getByPlaceholderText, getByText } = render(
       <Router>
         <AuthProvider>
           <Login />
@@ -32,8 +28,8 @@ describe('Login Component', () => {
       </Router>
     );
 
-    fireEvent.change(getByLabelText('Email'), { target: { value: 'test1@gmail.com' } });
-    fireEvent.change(getByLabelText('Contraseña'), { target: { value: 'test1234' } });
+    fireEvent.change(getByPlaceholderText('juan@example.com'), { target: { value: 'test@example.com' } });
+    fireEvent.change(getByPlaceholderText('Password'), { target: { value: 'password' } });
 
     fireEvent.click(getByText(/Iniciar Sesion/i));
 
@@ -41,5 +37,6 @@ describe('Login Component', () => {
     await waitFor(() => {
       expect(toast.success).toHaveBeenCalledWith("Iniciando sesión...");
     });
+
   });
 });

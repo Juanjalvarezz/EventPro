@@ -4,8 +4,8 @@ import {
   signupRequest,
   updateRequest,
 } from "../utils/authRequest.js";
-import { createContext, useState, useContext, useEffect } from "react";
-import instance from '../utils/axios.js';
+import React, { createContext, useState, useContext, useEffect } from "react";
+import instance from "../utils/axios.js";
 
 export const AuthContext = createContext();
 
@@ -48,12 +48,12 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", res.data.token);
     } catch (error) {
       if (error.code === "ERR_NETWORK") {
-        setErrors("Error en conexión con el servidor")
+        setErrors("Error en conexión con el servidor");
       } else {
         console.log(error.response.data.message);
-        setErrors(error.response.data.message)
+        setErrors(error.response.data.message);
         logout();
-        return error;      
+        return error;
       }
     } finally {
       setLoading(false);
@@ -104,8 +104,8 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    instance.defaults.headers['Authorization'] = token ? `${token}` : '';
-  }, [isAuthenticated])
+    instance.defaults.headers["Authorization"] = token ? `${token}` : "";
+  }, [isAuthenticated]);
 
   const verifyToken = async (token) => {
     try {
