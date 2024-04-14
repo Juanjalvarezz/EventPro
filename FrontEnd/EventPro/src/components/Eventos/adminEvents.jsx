@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { deleteEvent } from '../../utils/eventRequest';
 import ModalConfirm from '../ModalConfirm';
 

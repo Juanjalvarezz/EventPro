@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
@@ -104,7 +104,7 @@ const Register = () => {
 
               <div className="relative">
                 <input
-                  placeholder="john@example.com"
+                  placeholder="juan@example.com"
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
                   type="email"
                   required=""
