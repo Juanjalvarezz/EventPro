@@ -43,11 +43,16 @@ function Eventos() {
           {notFound || !events ? (
             <h1 className='text-center py-52'>No se han encontrado eventos disponibles</h1>
           ) : (
-            <div className='flex justify-center items-center mx-auto'>
+            <div className="w-11/12 mx-auto mt-5">
+            
+              <h2 className='w-fit mx-auto bg-gradient-to-r from-complement-800 to-primary-600 montserrat text-3xl w-lg font-black text-center p-3 mb-8 rounded-xl text-white'>Eventos Disponbiles</h2>
+              
+              <div className=''>
               <EventCard 
                 events={events}
                 userRole={user.role}
               />
+            </div>
             </div>
           )}
         </>

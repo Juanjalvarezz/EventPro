@@ -6,27 +6,29 @@ const EventCard = ({ events, userRole }) => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mx-auto text-white">
         {events.map(event => (
-          <div key={event._id} className="montserrat font-bold bg-primary-350 flex flex-col justify-between mx-auto p-6 rounded-3xl mb-6 text-xs md:text-sm lg:text-md">
-            <div className="flex flex-col justify-between items-center gap-3">
-              <div className="md:flex md:justify-center md:items-center md:flex-1">
-                <img className="lg:w-96 md:w-80 sm:w-72 rounded-3xl mx-auto" src={event.image} alt={event.name} />
-              </div>
+          <div key={event._id} className="w-11/12 montserrat font-bold bg-primary-500 dark:bg-primary-400 flex flex-col mx-auto p-6 rounded-3xl mb-6 text-xs md:text-sm lg:text-md">
+            <div className="flex flex-col items-center">
+            <div className="flex justify-center items-center">
+              <img className="w-96 rounded-3xl h-64 " src={event.image} alt={event.name} />
+            </div>
+
               <div className="flex flex-col justify-center items-center w-full">
-                <p className="text-xl sm:text-2xl md:text-2xl lg:text-2xl text-[#CAA8F5] mb-4">{event.name}</p>
-                <div className="text-left">
-                  <p className="sm:text-lg md:text-lg lg:text-xl">Ubicación: {event.place}</p>
-                  <p className="sm:text-lg md:text-lg lg:text-xl">Fecha: {new Date(event.date).toLocaleDateString()}</p>
-                  <p className="sm:text-lg md:text-lg lg:text-xl">Hora: {new Date(event.date).toLocaleTimeString('en-US')}</p>
-                  <div className="flex justify-center md:justify-start">
+                <h1 className="text-3xl font-black  text-primary-900  mt-4 mb-2">{event.name}</h1>
+                <div className="w-4/5 text-center">
+                  <p className="text-xl">Ubicación: {event.place}</p>
+                  <p className="text-xl">Fecha: {new Date(event.date).toLocaleDateString()}</p>
+                  <p className="text-xl">Hora: {new Date(event.date).toLocaleTimeString('en-US')}</p>
+                  <p className="text-xl">Precio: </p>
+                  <div className="flex justify-center md:justify-center">
                     <p className="text-sm sm:text-lg md:text-lg lg:text-xl">Estatus: </p>
-                    <p className={`ml-2 ${event.status === 'Disponible' ? 'text-green-600' : 'text-amber-500'} text-sm sm:text-lg md:text-lg lg:text-xl`}>{event.status}</p>
+                    <p className={`ml-2 ${event.status === 'Disponible' ? 'text-green-700' : 'text-amber-500'} text-sm sm:text-lg md:text-lg lg:text-xl`}>{event.status}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex justify-center items-center p-2 gap-4 w-full">
+            <div className="flex justify-center items-center p-2 gap-3 w-full">
               {userRole === 'admin' ? (
                 <>
                   <UpdateButton
@@ -37,7 +39,7 @@ const EventCard = ({ events, userRole }) => {
                   />
                 </>
               ) : (
-                <button type='button' className="bg-blue-500 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl" onClick={()=> navigate("/boletos", { state: { boleto: event }})}>Comprar Boleto</button>
+                <button type='button' className="bg-blue-500 rounded-xl p-4 sm:text-xl md:text-lg lg:text-xl" onClick={()=> navigate("/boletos", { state: { boleto: event }})}>Comprar Boleto</button>
               )}
             </div>
           </div>
