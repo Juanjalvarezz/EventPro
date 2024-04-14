@@ -1,23 +1,24 @@
-import { useState, useEffect } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header/Header';
-import AnimatedPage from '../components/Animation/AnimatedPage'
-import { useAuth } from '../contexts/AuthContext'
-import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
+import React from "react";
+import { useState, useEffect } from "react";
+import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import AnimatedPage from "../components/Animation/AnimatedPage";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ScrollToTopButton from "../components/Animation/ScrollToTopButton";
 
 const Login = () => {
   const { login, user, isAuthenticated, errors } = useAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const toastId = toast.success('Iniciando sesión...');
+    const toastId = toast.success("Iniciando sesión...");
 
     setTimeout(async () => {
       await login(email, password);
@@ -33,17 +34,17 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       if (user) {
-        if (user.role === 'promotor') {
-          navigate("/promotor")
+        if (user.role === "promotor") {
+          navigate("/promotor");
         } else {
-          navigate("/dashboard")
+          navigate("/dashboard");
         }
       }
     }
-  }, [isAuthenticated, navigate, user])
-  
+  }, [isAuthenticated, navigate, user]);
+
   const redirectToRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   return (
@@ -51,18 +52,33 @@ const Login = () => {
       <Header />
       <AnimatedPage>
         <ToastContainer />
+<<<<<<< HEAD
         <div className="flex justify-center items-center lg:py-8 md:py-8 sm:py-12">
           <div className="max-w-md w-11/12 bg-gradient-to-r from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 md:w-4/5" style={{ animation: 'slideInFromLeft 1s ease-out' }}>
             <h2 className="text-center text-4xl font-extrabold text-secondary-50 -mb-5" style={{ animation: 'appear 2s ease-out' }}>
+=======
+        <div className="flex justify-center items-center py-8">
+          <div
+            className="max-w-md w-11/12 bg-gradient-to-r from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden p-8 space-y-8 md:w-4/5"
+            style={{ animation: "slideInFromLeft 1s ease-out" }}
+          >
+            <h2
+              className="text-center text-4xl font-extrabold text-secondary-50 -mb-5"
+              style={{ animation: "appear 2s ease-out" }}
+            >
+>>>>>>> ff98ebe37810815526676cab99447bd719e9903f
               Bienvenido
             </h2>
-            <p className="text-center text-secondary-200" style={{ animation: 'appear 3s ease-out' }}>
+            <p
+              className="text-center text-secondary-200"
+              style={{ animation: "appear 3s ease-out" }}
+            >
               Ingresa en tu cuenta
             </p>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="relative">
                 <input
-                  placeholder="john@example.com"
+                  placeholder="juan@example.com"
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
                   required=""
                   id="email"
@@ -105,8 +121,11 @@ const Login = () => {
               </button>
             </form>
             <div className="text-center text-secondary-300">
-              No tienes una cuenta?{' '}
-              <a className="text-primary-300 hover:underline cursor-pointer" onClick={redirectToRegister}>
+              No tienes una cuenta?{" "}
+              <a
+                className="text-primary-300 hover:underline cursor-pointer"
+                onClick={redirectToRegister}
+              >
                 Registrate
               </a>
             </div>
@@ -114,7 +133,7 @@ const Login = () => {
         </div>
       </AnimatedPage>
       <Footer />
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </>
   );
 };
