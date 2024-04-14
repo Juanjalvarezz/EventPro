@@ -31,7 +31,7 @@ const NavLinks = ({ categories, handleLogout, setCategories }) => {
           className={`${
             category.active ? "text-red-500" : ""
           } hover:bg-primary-700 text-center hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-2xl rounded-2xl p-5 transition duration-500 ease-in-out`}
-          activeClassName="text-red-500"
+          activeclassname="text-red-500"
         >
           {category.name}
         </NavLink>
@@ -85,7 +85,7 @@ const Switch = () => {
         checked={theme === "dark" ? true : false}
       />
       <label
-        for="mode-switch"
+        htmlFor="mode-switch"
         className={
           "dark:bg-secondary-700 border-4 border-primary-700 dark:border-primary-300 -mt-2 bg-secondary-200 bg-opacity-50 inline-flex relative rounded-full p-2 transition-colors duration-300 ease-in-out "
         }
