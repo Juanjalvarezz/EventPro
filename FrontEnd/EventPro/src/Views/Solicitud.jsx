@@ -18,6 +18,7 @@ function Solicitud() {
   const editingEvent = location.state?.event;
   const isEditing = location.state?.isEditing;
   const [editing, setEditing] = useState(false);
+  const [updateEvents, setUpdateEvents] = useState(false);
   const [accepted, setAccepted] = useState(null);
   const navigate = useNavigate();
 
@@ -57,10 +58,13 @@ function Solicitud() {
             editingEvent={editingEvent}
             editing={editing}
             setEditing={setEditing}
+            setUpdateEvents={setUpdateEvents}
           />
           {!editing && (
             <Solicitudes
               setAccepted={setAccepted}
+              updateEvents={updateEvents}
+              setUpdateEvents={setUpdateEvents}
             />
           )}
         </div>

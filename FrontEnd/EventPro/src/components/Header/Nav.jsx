@@ -72,7 +72,9 @@ const Switch = () => {
   function toggleDarkMode() {
     setTheme(theme === "light" ? "dark" : "light");
     const root = document.querySelector("body");
-    root.classList.toggle("dark-mode");
+    if (root) {
+      root.classList.toggle("dark-mode");
+    }
   }
 
   return (
@@ -84,8 +86,8 @@ const Switch = () => {
         onChange={toggleDarkMode}
         checked={theme === "dark" ? true : false}
       />
-      <label
-        for="mode-switch"
+      <label 
+        htmlFor="mode-switch"
         className={
           "dark:bg-secondary-700 border-4 border-primary-700 dark:border-primary-300 -mt-2 bg-secondary-200 bg-opacity-50 inline-flex relative rounded-full p-2 transition-colors duration-300 ease-in-out "
         }
@@ -222,8 +224,8 @@ const Nav = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-5 md:gap-3 items-center">
             <button
               onClick={() => {
-                logout();
                 closeModal();
+                logout();
               }}
               className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 lg:text-xl md:text-lg sm:text-lg"
             >

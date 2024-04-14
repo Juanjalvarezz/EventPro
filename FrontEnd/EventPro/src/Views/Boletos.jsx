@@ -3,13 +3,13 @@ import Footer from '../components/Footer'
 import { useAuth } from '../contexts/AuthContext'
 import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 import AnimatedPage from '../components/Animation/AnimatedPage';
-import Pagos from '../components/Solicitudes/Pagos';
+import Pagos from '../components/Boletos/Pagos';
 import { useLocation } from 'react-router-dom';
 
 function Boletos() {
   const { user } = useAuth();
   const location = useLocation();
-  const ticket = location.state?.boleto;
+  const event = location.state?.boleto;
 
   return (
     <>
@@ -22,7 +22,7 @@ function Boletos() {
         ) : (
           <>
             <Pagos 
-              ticket={ticket}
+              event={event}
             />
           </>
         )}

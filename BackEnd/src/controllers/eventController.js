@@ -32,8 +32,7 @@ const createEvent = async (req, res) => {
     });
   } catch (error) {
     console.log('Error al crear el evento: ', error);
-    res.status(500).json({ message: "Error al crear el evento" })
-    next(error);
+    return res.status(500).json({ message: "Error al crear el evento" });
   }
 }
 

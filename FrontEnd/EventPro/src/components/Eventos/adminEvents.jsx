@@ -6,12 +6,6 @@ import ModalConfirm from '../ModalConfirm';
 
 export const UpdateButton = ({ event }) => {
   const navigate = useNavigate();
-  /*
-  const location = {
-    pathname: '/solicitud',
-  }
-  <Link className="bg-blue-500 w-36 rounded-xl text-center p-2 sm:text-md md:text-lg lg:text-xl" to={location} replace>Editar</Link>
-  */
   return (
     <>
       <button

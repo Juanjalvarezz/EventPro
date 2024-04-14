@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { UpdateButton, DeleteButton } from './adminEvents';
 
 const EventCard = ({ events, userRole }) => {
+  const navigate = useNavigate()
+
   return (
     <div>
       <div className="grid grid-cols-2 gap-4">
@@ -35,7 +37,7 @@ const EventCard = ({ events, userRole }) => {
                   />
                 </>
               ) : (
-                <Link className="bg-blue-500 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl" to={{ pathname: "/boletos", state: { boleto: event } }}>Comprar Boleto</Link>
+                <button type='button' className="bg-blue-500 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl" onClick={()=> navigate("/boletos", { state: { boleto: event }})}>Comprar Boleto</button>
               )}
             </div>
           </div>
