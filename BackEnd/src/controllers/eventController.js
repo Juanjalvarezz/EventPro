@@ -65,7 +65,9 @@ const updateEvent = async (req, res) => {
       return next(new createError("Evento no encontrado", 404));
     }
 
-    sendMailApproveEvent(user.name, user.email, updateEvent);
+    const userFound = await User.findById(user._id);
+
+    sendMailApproveEvent(userFound.name, userFound.email, updateEvent);
 
     res.status(201).json({
       status: 201,

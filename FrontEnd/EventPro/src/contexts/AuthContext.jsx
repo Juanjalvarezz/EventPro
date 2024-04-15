@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }) => {
       if (!res.data) {
         logout();
       }
-      console.log(res.data);
       setIsAuthenticated(true);
       setUser(res.data.user);
       //Guardar el token en localStorage para mantener sesion iniciada
@@ -63,7 +62,6 @@ export const AuthProvider = ({ children }) => {
   const editUser = async (id, editedUser) => {
     try {
       const res = await updateRequest(id, editedUser);
-      console.log("User updated:", res.data);
       setUser(res.data.user);
     } catch (error) {
       console.error("Error updating user:", error);
