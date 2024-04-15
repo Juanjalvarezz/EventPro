@@ -72,7 +72,7 @@ function Boletos() {
           </>
         ) : (
           <>
-            <h2 className='text-3xl text-center poppins font-bold mb-4 bg-gradient-to-r w-fit p-3 mx-auto from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden'>Tus Boletos</h2>
+            <h2 className='text-3xl text-center poppins font-bold mb-4 bg-gradient-to-r w-fit p-3 mx-auto from-complement-800 to-primary-600 rounded-xl shadow-2xl overflow-hidden text-white'>Tus Boletos</h2>
             {loadingPayments ? ( 
               <Loading />
             ) : (

@@ -47,15 +47,18 @@ const EventCard = ({ events, userRole }) => {
                     {event.status}
                   </p>
                 </div>
-                <div className='flex flex-col justify-center items-start w-full'>
-                  <p>Boletos disponibles:</p>
-                  {event.tickets.map((ticket, index) => (
-                    <div key={index} className='flex justify-between items-center w-full'>
-                      <p>{ticket.type}:</p>
-                      <p>${ticket.rate}</p>
-                      <p>{`(${ticket.available} disp.)`}</p>
-                    </div>
-                  ))}
+                <div className="bg-primary-700 rounded-xl p-3">
+                <p className="text-xl font-bold mb-3">Boletos<span className='text-primary-300'> disponibles:</span></p>
+                {event.tickets.map((ticket, index) => (
+                <div key={index} className="flex justify-between items-center mb-2">
+                <p className="text-base">{ticket.type}:</p>
+
+                <div className="flex items-center">
+                <p className="text-base font-semibold">${ticket.rate}</p>
+                <p className="text-sm ml-2 text-secondary-200">({ticket.available} disp.)</p>
+                </div>
+                </div>
+                ))}
                 </div>
               </div>
             </div>

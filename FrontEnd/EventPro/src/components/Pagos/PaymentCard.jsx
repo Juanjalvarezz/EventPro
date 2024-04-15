@@ -44,7 +44,7 @@ function PaymentCard({ payment, id, setIsChanges, setErrorMessage, setSuccessMes
 
   const ticketFound = payment.event.tickets.find(ticket => ticket._id === payment.ticket)
   return (
-    <div>
+    <div className=''>
       <div className="bg-primary-350 poppins font-bold p-4 rounded-t-2xl shadow-md text-xl text-center">
         <div className="bg-gradient-to-r from-complement-800 to-primary-600 font-semibold flex flex-col justify-center items-center mx-auto w-fit p-3 rounded-xl mb-2">
           <p className="sm:text-lg md:text-md xl:text-lg">{payment.user.name}</p>
