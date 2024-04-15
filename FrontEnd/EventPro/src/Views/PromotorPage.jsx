@@ -1,16 +1,22 @@
+import AnimatedPage from '../components/Animation/AnimatedPage'
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton'
+import DashboardCards from '../components/Dashboard/DashboardCards'
+import UserContent from '../components/Dashboard/UserContent'
 import Footer from '../components/Footer'
-import PromotorHeader from '../components/Header/PromotorHeader'
+import Header from '../components/Header/Header'
 
 function PromotorPage() {
   return (
     <>
-    <PromotorHeader/>
+    <AnimatedPage>
+      <Header />
 
-    <div className='text-center py-52'>
-      <h1>Promotor</h1>
-    </div>
+      <DashboardCards/>
+      <UserContent/>
 
-    <Footer/>
+      <Footer />
+      <ScrollToTopButton/>
+      </AnimatedPage>
     </>
   )
 }

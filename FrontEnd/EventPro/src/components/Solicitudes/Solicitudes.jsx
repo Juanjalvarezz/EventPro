@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Loading from "../Animation/Loading";
 import ModalConfirm from '../ModalConfirm';
 
-function Solicitudes() {
+function Solicitudes({ setAccepted, updateEvents, setUpdateEvents }) {
   const { user } = useAuth();
   const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -18,18 +18,24 @@ function Solicitudes() {
     } catch (error) {
       console.log(error);
     } finally {
+      setUpdateEvents(false);
       setIsLoading(false);
     }
   };
 
+  const acceptEvent = (event) => {
+    setAccepted(event)
+  }
+  
   const fetchEventRequest = async () => {
     try {
-      const res = await getEventsStatus();
+      const res = await getEventsStatus('Por aprobar');
       setEvents(res.data.events);
       setIsOpenModal(Object.fromEntries(res.data.events.map(event => [event._id, false])));
     } catch (error) {
       console.log(error);
     } finally {
+      setUpdateEvents(false);
       setIsLoading(false);
     }
   };
@@ -38,18 +44,27 @@ function Solicitudes() {
     try {
       const res = await deleteEvent(id);
       console.log(res);
+      setUpdateEvents(true);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    if (user.role === 'promotor') {
-      eventsByPromotor(user._id);
-    } else if (user.role === 'admin') {
+  const updateRequest = (id, role) => {
+    if (role === 'promotor') {
+      eventsByPromotor(id);
+    } else if (role === 'admin') {
       fetchEventRequest();
     }
+  }
+
+  useEffect(() => {
+    updateRequest(user._id, user.role);
   }, []);
+  
+  useEffect(() => {
+    updateRequest(user._id, user.role);
+  }, [updateEvents]);
 
   const handleOpenModal = (eventId) => {
     setIsOpenModal(prevState => ({
@@ -67,7 +82,7 @@ function Solicitudes() {
 
   return (
     <>
-      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat w-fit text-3xl my-6 font-black text-center py-3 px-6  rounded-xl'>
+      <h2 className='bg-gradient-to-r from-complement-800 to-primary-600 montserrat w-fit text-3xl my-6 font-black text-center py-3 px-6  rounded-xl text-white'>
         Solicitudes de Eventos
       </h2>
       {isLoading ? (
@@ -76,7 +91,7 @@ function Solicitudes() {
         <>
           {events && (
             events.map(event => (
-              <div key={event._id} className="montserrat font-bold lg:w-3/5  sm:w-11/12 mb-6 text-xs md:text-sm lg:text-md">
+              <div key={event._id} className="montserrat font-bold lg:w-3/5  sm:w-11/12 mb-6 text-xs md:text-sm lg:text-md text-white">
                 <div className="bg-primary-750 mx-auto p-6 rounded-t-3xl">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
                     <div className="md:flex md:justify-center md:items-center md:flex-1">
@@ -103,7 +118,7 @@ function Solicitudes() {
                 </div>
                 <div className="flex justify-center items-center p-2 rounded-b-3xl gap-4 w-full bg-primary-250">
                   {user.role === 'admin' && (
-                    <button className="bg-blue-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl">Aceptar</button>
+                    <button className="bg-blue-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl" onClick={() => acceptEvent(event)}>Aceptar</button>
                   )}
                   <button
                     className="bg-red-500 w-36 rounded-xl p-2 sm:text-md md:text-lg lg:text-xl"

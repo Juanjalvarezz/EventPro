@@ -1,17 +1,21 @@
-import React from 'react'
 import Footer from '../components/Footer';
-import AdminHeader from '../components/Header/AdminHeader';
+import Header from '../components/Header/Header';
 import UsersList from '../components/UsersList';
+import AnimatedPage from '../components/Animation/AnimatedPage';
+import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
 
 function AdminUsers() {
   return (
     <>
-    <AdminHeader/>
+      <Header />
+      <AnimatedPage>
+        
+        <h1 className='text-3xl text-center poppins font-bold mb-4'>Lista de Usuarios</h1>
+        <UsersList />
 
-    <h1 className='text-3xl text-center poppins font-bold mb-4'>Lista de Usuarios</h1>
-    <UsersList/>
-
-    <Footer/>
+      </AnimatedPage>
+      <Footer />
+      <ScrollToTopButton/>
     </>
   )
 }

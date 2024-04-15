@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import Footer from "../components/Footer";
-import LoginHeader from "../components/Header/LoginHeader";
+import Header from "../components/Header/Header";
 import AnimatedPage from "../components/Animation/AnimatedPage";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTopButton from "../components/Animation/ScrollToTopButton.jsx";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -11,7 +14,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [isPromotor, setIsPromotor] = useState(false); // Nuevo estado para el botón de toggle
+  const [isPromotor, setIsPromotor] = useState(false); 
   const navigate = useNavigate();
   const { register, user, isAuthenticated, errors } = useAuth();
   const [registerAttempt, setRegisterAttempt] = useState(false);
@@ -20,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     if (password !== confirmPassword) {
       return setError("Las Contraseñas no coinciden");
-    }    
+    }
     register(name, email, password, isPromotor);
     setRegisterAttempt(true);
   };
@@ -41,11 +44,11 @@ const Register = () => {
     }
   }, [isAuthenticated, navigate, user])
 
-  useEffect(()=> {
+  useEffect(() => {
     if (registerAttempt && !error) {
-      redirectToLogin();
+      redirectToLoginWithDelay();
     }
-  }, [error, registerAttempt])
+  }, [error, registerAttempt]);
 
   //Si hubo error al registrar que me lo almacene en la estado local de error
   useEffect(() => {
@@ -58,10 +61,19 @@ const Register = () => {
     navigate("/login");
   };
 
+  const redirectToLoginWithDelay = () => {
+    toast.success("Registrado...");
+    setTimeout(() => {
+      redirectToLogin();
+      toast.dismiss(); 
+    }, 2000); 
+  };
+
   return (
     <>
+      <Header />
       <AnimatedPage>
-        <LoginHeader />
+      <ToastContainer />
 
         <div className="flex justify-center items-center py-5">
           <div
@@ -80,6 +92,7 @@ const Register = () => {
                   placeholder="Nombre y Apellido"
                   type="text"
                   id="name"
+                  required=""
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
@@ -91,9 +104,10 @@ const Register = () => {
 
               <div className="relative">
                 <input
-                  placeholder="john@example.com"
+                  placeholder="juan@example.com"
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
                   type="email"
+                  required=""
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -106,6 +120,7 @@ const Register = () => {
                 <input
                   placeholder="Contraseña"
                   type="password"
+                  required=""
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
@@ -119,8 +134,12 @@ const Register = () => {
                 <input
                   placeholder="Confirmar Contraseña"
                   type="password"
+                  required=""
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value)
+                    setError('');
+                  }}
                   className="peer h-10 w-full border-b-2 border-secondary-300 text-secondary-50 bg-transparent placeholder-transparent focus:outline-none focus:border-primary-500"
                 />
                 <label className="absolute left-0 -top-3.5 text-secondary-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-secondary-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-primary-500 peer-focus:text-sm">
@@ -131,7 +150,7 @@ const Register = () => {
               {error && <p className="text-red-500 text-center">{error}</p>}
 
               <button
-                className="w-full py-2 px-4 bg-primary-500 hover:bg-primary-700 rounded-md shadow-lg text-secondary-50 font-semibold transition duration-200"
+                className="w-full py-2 px-4 bg-primary-500 rounded-md shadow-lg text-secondary-50 font-semibold transition hover:scale-105 duration-200 hover:drop-shadow-2xl hover:shadow-primary-600 hover:cursor-pointer"
                 type="submit"
               >
                 Registrarse
@@ -161,8 +180,9 @@ const Register = () => {
           </div>
         </div>
 
-        <Footer />
       </AnimatedPage>
+      <Footer />
+      <ScrollToTopButton/>
     </>
   );
 };

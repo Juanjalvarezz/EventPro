@@ -9,7 +9,7 @@ import integrity from "/trust.png";
 function About() {
   return (
     <>
-      <div className="bg-primary-700 py-16 px-4 sm:px-6 lg:px-8 -mt-8">
+      <div className="dark:bg-primary-700 bg-primary-400  py-16 px-4 sm:px-6 lg:px-8 -mt-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="poppins text-4xl text-secondary-900 sm:text-4xl animate-bounce">
@@ -27,8 +27,10 @@ function About() {
                 src="https://i.ibb.co/GV7GxCZ/avatar1105266211.jpg"
                 alt="Team member 1"
               />
-              <h2 className="text-2xl lg:text-3xl font-bold">Juan González</h2>
-              <p className="text-secondary-400 font-bold">CEO & Fundador</p>
+              <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
+                Juan González
+              </h2>
+              <p className="dark:text-secondary-200 text-secondary-600 font-bold">CEO & Fundador</p>
             </div>
             <div className="flex flex-col items-center space-y-4">
               <img
@@ -36,8 +38,10 @@ function About() {
                 src="https://i.ibb.co/t29p6jp/avatar1473660530.jpg"
                 alt="Team member 2"
               />
-              <h2 className="text-2xl lg:text-3xl font-bold">Juan Sarmiento</h2>
-              <p className="text-secondary-400 font-bold">CEO & Fundador</p>
+              <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
+                Juan Sarmiento
+              </h2>
+              <p className="dark:text-secondary-200 text-secondary-600 font-bold">CEO & Fundador</p>
             </div>
             <div className="flex flex-col items-center space-y-4">
               <img
@@ -45,16 +49,16 @@ function About() {
                 src="https://i.ibb.co/s3F1qsr/avatar1045924273.jpg"
                 alt="Team member 3"
               />
-              <h2 className="text-2xl lg:text-3xl font-bold">
+              <h2 className="text-2xl lg:text-3xl font-bold text-secondary-50">
                 Leonardo Méndez
               </h2>
-              <p className="text-secondary-400 font-bold">CEO & Fundador</p>
+              <p className="dark:text-secondary-200 text-secondary-600 font-bold">CEO & Fundador</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-primary-900 py-16 px-4 sm:px-6 lg:px-8 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="dark:bg-primary-900 bg-primary-700 py-16 px-4 sm:px-6 lg:px-8 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
         <div className="w-11/12 mx-auto">
           <img
             src={mision}
@@ -64,7 +68,7 @@ function About() {
           <h2 className="text-center text-2xl lg:text-3xl font-bold text-secondary-50 mb-8 mt-6">
             Nuestra Misión
           </h2>
-          <p className="text-center text-lg lg:text-xl text-secondary">
+          <p className="text-center text-lg lg:text-xl text-secondary-50">
             En EventPro, nuestra misión es conectar a las personas a través de
             experiencias emocionantes y memorables. Nos esforzamos por crear
             eventos que inspiren, deleiten y unan a comunidades de todo el
@@ -78,7 +82,7 @@ function About() {
             alt="Servicios"
             className="max-w-full rounded-full w-2/5 mx-auto animate-ping"
           />
-          <h2 className="text-center text-2xl lg:text-3xl font-bold text-secondary mb-8 mt-6">
+          <h2 className="text-center text-2xl lg:text-3xl font-bold text-secondary-50 mb-8 mt-6">
             Nuestros Servicios
           </h2>
           <p className="text-center text-lg lg:text-xl text-secondary-50">
@@ -90,7 +94,7 @@ function About() {
         </div>
       </div>
 
-      <div className="bg-primary-700 py-16 px-4 sm:px-6 lg:px-8 -mb-8">
+      <div className="dark:bg-primary-700 bg-primary-400 py-16 px-4 sm:px-6 lg:px-8 -mb-8">
         <div className="max-w-7xl mx-auto">
           <div>
             <h2 className="text-center text-3xl font-bold text-secondary-50 mb-8 -mt-9 md:-mt-5 animate-bounce">
@@ -102,7 +106,7 @@ function About() {
                   <span className="text-secondary-50 text-xl lg:text-2xl font-bold mb-2 mt-8">
                     Creatividad
                   </span>
-                  <p className="text-gray-300 text-lg lg:text-xl font-bold">
+                  <p className="dark:text-secondary-300 text-secondary-600 text-lg lg:text-xl font-bold">
                     Fomentamos una cultura de creatividad, alentando ideas y
                     soluciones innovadoras en todo lo que hacemos.
                   </p>
@@ -117,7 +121,7 @@ function About() {
                   <span className="text-secondary-50 text-xl lg:text-2xl font-bold mb-2 mt-8">
                     Excelencia
                   </span>
-                  <p className="text-secondary-300 text-lg lg:text-xl font-bold">
+                  <p className="dark:text-secondary-300 text-secondary-600  text-lg lg:text-xl font-bold">
                     Nos esforzamos por la excelencia en cada aspecto de nuestro
                     trabajo, brindando eventos y servicios de alta calidad a
                     nuestros clientes.
@@ -135,7 +139,7 @@ function About() {
                   <span className="text-secondary-50 text-xl lg:text-2xl font-bold mb-2 mt-8">
                     Comunidad
                   </span>
-                  <p className="text-secondary-300 text-lg lg:text-xl font-bold">
+                  <p className="dark:text-secondary-300 text-secondary-600  text-lg lg:text-xl font-bold">
                     Creemos en el poder de la comunidad y buscamos crear eventos
                     inclusivos que reúnan a las personas fomentando asi en
                     esparcimiento social.
@@ -151,7 +155,7 @@ function About() {
                   <span className="text-secondary-50 text-xl lg:text-2xl font-bold mb-2 mt-8">
                     Integridad
                   </span>
-                  <p className="text-secondary-300 text-lg lg:text-xl font-bold">
+                  <p className="dark:text-secondary-300 text-secondary-600  text-lg lg:text-xl font-bold">
                     Nos comportamos con integridad, honestidad y transparencia
                     en todas nuestras interacciones e intentamos promover las
                     mismas acciones.

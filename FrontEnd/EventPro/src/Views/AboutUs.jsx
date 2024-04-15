@@ -1,16 +1,21 @@
-import React from "react";
 import Footer from "../components/Footer";
-import UserHeader from "../components/Header/UserHeader";
+import Header from "../components/Header/Header";
 import About from "../components/About";
+import AnimatedPage from "../components/Animation/AnimatedPage";
+import ScrollToTopButton from "../components/Animation/ScrollToTopButton";
 
 function AboutUs() {
+
   return (
     <>
-      <UserHeader />
+      <Header />
+      <AnimatedPage>
 
-      <About />
+        <About />
 
+      </AnimatedPage>
       <Footer />
+      <ScrollToTopButton/>
     </>
   );
 }

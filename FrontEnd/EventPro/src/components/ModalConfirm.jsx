@@ -1,3 +1,5 @@
+import React from 'react';
+
 const ModalConfirm = ({ isOpen, onCancel, onConfirm, id }) => {
   const handleConfirm = () =>{
     onConfirm(id);

@@ -43,6 +43,8 @@ Todos los datos de la app están alojados en una base de datos en **MongoDB** pa
 - [Tailwind](https://tailwindcss.com/): Es un framework de CSS para generar clases que sirven para agilizar el trabajo dentro del desarrollo de la interfaz de usuario.
 
 - [Lucide-react](https://lucide.dev/guide/packages/lucide-react): Es una librería de iconos de Lucida, implementado en react de manera nativa y con formatos svg.
+- 
+- [Jest](https://jestjs.io/): Se trata de un Framework de Javascript para probar el funcionamiento específico los distintos componentes de React.
 
 ## Instalación.
 
@@ -70,11 +72,11 @@ Todos los datos de la app están alojados en una base de datos en **MongoDB** pa
 
 - En la carpeta BackEnd haz click izquierdo sobre ella y elige la opción de "abrir en terminal integrada"
 
-- Instala las dependencias utilizando el comando npm install. 
+- Instala las dependencias utilizando el comando `npm install`. 
 
 - En la carpeta FrontEnd/EventPro haz click izquierdo sobre ella y elige la opción de "abrir en terminal integrada"
 
-- Instala las dependencias utilizando el comando npm install.
+- Instala las dependencias utilizando el comando `npm install`.
 
 - Esto deberá generar los archivos node_modules.
 
@@ -86,19 +88,21 @@ Todos los datos de la app están alojados en una base de datos en **MongoDB** pa
 
 - Ahora regresa al Visual Studio Code y dirígete a la sección inferior del mismo en las terminales.  
 
-- Inicia la aplicación con el comando npm run dev en la terminal Backend.
+- Inicia la aplicación con el comando `npm run dev` en la terminal Backend.
 
 - En la terminal BackEnd te saldrá un mensaje que dirá:
 `Server listen on port:  4000
 Conectado a la BD`
 
-- Inicia la aplicación con el comando npm run preview en la terminal FrontEnd.
+- Inicia la aplicación con el comando `npm run build` seguido de `npm run preview` en la terminal FrontEnd.
 
 - En la terminal Frontend te saldrá un mensaje que dirá: `http://localhost:3000/`.
 
 - Accede a él para ser redirigido a la página principal de la app en tu navegador predeterminado.
 
 - Ahora puedes disfrutar de la app online o haciendo click en el icono de instalar en la barra de navegación de Google, puedes instalar la app en tu escritorio para usarla de forma local.
+
+- Se debe iniciar nuevamente el `npm run preview` para poder utilizar la pwa.
 
 - Por último, **Disfruta de la Aplicación**.
 

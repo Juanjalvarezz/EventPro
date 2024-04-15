@@ -24,12 +24,12 @@ export default function App() {
   const [open, setOpen] = useState(true);
   return (
     <>
-      <div  onClick={() => setOpen((prev) => !prev)}>
+      <div onClick={() => setOpen((prev) => !prev)}>
         <Trail open={open}>
-          <span>Conectar,</span>
-          <span className='text-[#CAA8F5]'>Explorar,</span>
-          <span className='text-[#9984D4]'>Disfrutar,</span>
-          <span className='text-[#673698]'>Experimentar</span>
+          <span className='dark:text-secondary-50 text-secondary-500'>Conectar,</span>
+          <span className='dark:text-primary-250  text-primary-650'>Explorar,</span>
+          <span className='dark:text-primary-350 text-primary-500'>Disfrutar,</span>
+          <span className='dark:text-primary-650  text-primary-400'>Experimentar</span>
         </Trail>
       </div>
     </>

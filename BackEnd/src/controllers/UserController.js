@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const createError = require('../utils/appError');
 const jwt = require('jsonwebtoken')
 const { hashPassword, comparePasswords, createToken } = require('../middlewares/authMiddleware');
+const { sendMailRegister } = require('../config/nodemailer');
 
 exports.singup = async (req, res, next) => {
   try {
@@ -22,6 +23,9 @@ exports.singup = async (req, res, next) => {
       role: role || 'user', // Si no se proporciona un rol, se establece como 'user'
     });
 
+    //Envio de correo electronico de bienvenida
+    sendMailRegister(newUser.name, newUser.email);
+
     res.status(201).json({
       status: 'Exitoso',
       message: 'Usuario Registrado correctamente',
@@ -34,6 +38,7 @@ exports.singup = async (req, res, next) => {
     });
 
   } catch (error) {
+    console.log(error)
     next(error);
   }
 };
@@ -56,7 +61,7 @@ exports.login = async (req, res, next) => {
     }
 
     // Generar token
-    const token = createToken({ '_id': user._id, 'role': user.role});
+    const token = createToken({ '_id': user._id, 'role': user.role });
 
     res.status(200).json({
       status: 'Exitoso',
@@ -176,13 +181,13 @@ exports.verifySesion = async (req, res, next) => {
     const { token } = req.body;
 
     if (!token) {
-      return res.status(400).json({ message: "No hay sesión activa, vuelva a ingresar"})
+      return res.status(400).json({ message: "No hay sesión activa, vuelva a ingresar" })
     }
 
     const decoded = jwt.verify(token, process.env.SECRET_KEY,)
     const userFound = await User.findById(decoded)
 
-    if (!userFound) return res.status(400).json({ message: "Token inválido"})
+    if (!userFound) return res.status(400).json({ message: "Token inválido" })
 
     res.status(200).json({
       status: 'Exitoso',
