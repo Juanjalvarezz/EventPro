@@ -9,7 +9,6 @@ import AnimatedPage from '../components/Animation/AnimatedPage';
 import FormRequest from '../components/Solicitudes/FormRequest'
 import Solicitudes from '../components/Solicitudes/Solicitudes';
 import ScrollToTopButton from '../components/Animation/ScrollToTopButton';
-import { toast, ToastContainer } from 'react-toastify';
 import { useLocation } from 'react-router-dom';
 
 function Solicitud() {
@@ -21,16 +20,6 @@ function Solicitud() {
   const [updateEvents, setUpdateEvents] = useState(false);
   const [accepted, setAccepted] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (accepted) {
-      const toastId = toast.success('Establece la hora y los boletos');
-
-      setTimeout(() => {
-        toast.success(toastId);
-      }, 2000);
-    }
-  }, [accepted])
 
   useEffect(() => {
     //verifcar si se va a editar el evento
@@ -51,7 +40,6 @@ function Solicitud() {
     <>
       <Header />
       <AnimatedPage>
-        <ToastContainer />
         <div className='flex justify-center items-center flex-col w-full'>
           <FormRequest
             accepted={accepted}

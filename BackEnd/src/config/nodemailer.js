@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const { welcome } = require('../nodemailer/mails');
+const { welcome, approveEvent, approvedPayment } = require('../nodemailer/mails');
 const { NODEMAILER_USER, NODEMAILER_PASS } = process.env;
 
 const transporter = nodemailer.createTransport({
@@ -19,7 +19,6 @@ const sendMailRegister = (name, email) => {
     subject: 'Bienvenido a EventPro',
     html: welcomeMessage
   }
-
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
@@ -29,7 +28,42 @@ const sendMailRegister = (name, email) => {
   })
 }
 
+const sendMailApproveEvent = (name, email, event) => {
+  const approveEventMessage = approveEvent(name, event);
 
+  const mailOptions = {
+    from: NODEMAILER_USER,
+    to: email,
+    subject: 'Evento aprobado',
+    html: approveEventMessage
+  }
 
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Correo enviado: ", info.response);
+    }
+  })
+};
 
-module.exports = { sendMailRegister };
+const sendMailApprovedPayment = (name, email, payment, event) => {
+  const approvedPaymentMessage = approvedPayment(name, payment, event);
+
+  const mailOptions = {
+    from: NODEMAILER_USER,
+    to: email,
+    subject: 'Pago aprobado',
+    html: approvedPaymentMessage
+  }
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Correo enviado: ", info.response);
+    }
+  })
+};
+
+module.exports = { sendMailRegister, sendMailApproveEvent, sendMailApprovedPayment };

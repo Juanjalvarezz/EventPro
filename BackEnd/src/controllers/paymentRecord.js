@@ -1,5 +1,6 @@
 const PaymentRecord = require('../models/paymentRecordModel.js');
 const Event = require('../models/eventModel');
+const { sendMailApprovedPayment } = require('../config/nodemailer');
 
 const createPaymentRecord = async (req, res) => {
   try {
@@ -35,7 +36,7 @@ const approvePayment = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const paymentRecord = await PaymentRecord.findById(id);
+    const paymentRecord = await PaymentRecord.findById(id).populate('user', 'name email');
 
     if (!paymentRecord) {
       return res.status(404).json({ message: 'Pago no encontrado' });
@@ -62,9 +63,12 @@ const approvePayment = async (req, res) => {
     const approvedPayment = await paymentRecord.save();
     const eventUpdated = await event.save();
 
+    //Envio de correo electronico de aprobacion
+    sendMailApprovedPayment(paymentRecord.user.name, paymentRecord.user.email, approvedPayment, eventUpdated);
+
     res.status(201).json({
       status: 201,
-      message: "Pago aprovado exitosamente",
+      message: "Pago aprobado exitosamente",
       approvedPayment,
       eventUpdated,
     })

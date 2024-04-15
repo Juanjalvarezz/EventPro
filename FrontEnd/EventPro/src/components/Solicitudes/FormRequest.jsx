@@ -101,14 +101,12 @@ const FormRequest = ({ accepted, editingEvent, editing, setEditing, setUpdateEve
       setTicketsList([]);
       setUpdateEvents(true);
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data.message);
     }
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(e.target.value);
   };
 
   const handleImageChange = (e) => {

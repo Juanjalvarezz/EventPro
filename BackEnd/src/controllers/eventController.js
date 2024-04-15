@@ -1,6 +1,7 @@
 const Event = require('../models/eventModel');
 const User = require('../models/userModel');
 const PaymentRecord = require('../models/paymentRecordModel.js');
+const { sendMailApproveEvent } = require('../config/nodemailer');
 
 const createEvent = async (req, res) => {
   try {
@@ -27,7 +28,7 @@ const createEvent = async (req, res) => {
     const eventSaved = await newEvent.save();
 
     res.status(201).json({
-      status: 200,
+      status: 201,
       message: 'Solictud de Evento Agregado con éxito',
       eventSaved
     });
@@ -64,12 +65,15 @@ const updateEvent = async (req, res) => {
       return next(new createError("Evento no encontrado", 404));
     }
 
+    sendMailApproveEvent(user.name, user.email, updateEvent);
+
     res.status(201).json({
-      status: 200,
+      status: 201,
       message: 'Evento modificado con éxito',
       updateEvent,
     });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ message: "Error al editar el evento" })
   }
 }

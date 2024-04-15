@@ -26,7 +26,7 @@ function Solicitudes({ setAccepted, updateEvents, setUpdateEvents }) {
   const acceptEvent = (event) => {
     setAccepted(event)
   }
-
+  
   const fetchEventRequest = async () => {
     try {
       const res = await getEventsStatus('Por aprobar');

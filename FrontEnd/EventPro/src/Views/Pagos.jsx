@@ -31,7 +31,6 @@ function Pagos() {
       console.log(res)
       setPayments(res.data.paymentRecords);
     } catch (error) {
-      console.log(error)
       return setPayments([]);
     } finally {
       setLoading(false);
