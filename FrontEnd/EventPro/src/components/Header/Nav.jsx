@@ -30,7 +30,7 @@ const NavLinks = ({ categories, handleLogout, setCategories }) => {
           }}
           className={`${
             category.active ? "text-red-500" : ""
-          } hover:bg-primary-700 text-center hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-2xl rounded-2xl p-5 transition duration-500 ease-in-out`}
+          } hover:bg-primary-700 text-center hover:text-secondary-50 text-secondary-100 hover:shadow-lg hover:rounded-2xl rounded-2xl p-5 transition duration-500 ease-in-out`} 
           activeclassname="text-red-500"
         >
           {category.name}
@@ -120,7 +120,7 @@ const Nav = () => {
             { name: "Home", to: "/dashboard", active: false },
             { name: "Solicitudes", to: "/solicitud", active: false },
             { name: "Boletos", to: "/boletos", active: false },
-            { name: "Pagos", to: "/AdminPagos", active: false },
+            { name: "Pagos", to: "/pagos", active: false },
             { name: "Usuarios", to: "/adminUsers", active: false },
             { name: "LogOut", to: "", active: false },
           ];

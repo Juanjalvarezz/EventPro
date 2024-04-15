@@ -71,7 +71,7 @@ const EventCard = ({ events, userRole }) => {
                 type="button"
                 className="bg-blue-500 rounded-xl p-4 sm:text-xl md:text-lg lg:text-xl"
                 onClick={() =>
-                  navigate("/boletos", { state: { boleto: event } })
+                  navigate("/pagos", { state: { boleto: event } })
                 }
               >
                 Comprar Boleto

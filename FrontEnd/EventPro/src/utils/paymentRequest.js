@@ -5,6 +5,11 @@ export const getPaymentRecords = () => {
   return res;
 }
 
+export const getPaymentRecordsUser = () => {
+  const res = axios.get('/payments/users')
+  return res;
+}
+
 export const createPaymentRecord = (paymentData) => {
   const res = axios.post('/payments', paymentData)
   return res;

@@ -115,4 +115,26 @@ const getPaymentRecords = async (req, res) => {
   }
 }
 
-module.exports = { getPaymentRecords, createPaymentRecord, approvePayment, deletePayment };
+const getPaymentRecordsUser = async (req, res) => {
+  try {
+    const user = req.user._id;
+    const paymentRecords = await PaymentRecord.find({ user, 'payment.status': 'Aprobado' })
+      .populate('event', 'name place image tickets')
+      .populate('user', 'name email');
+
+    if (!paymentRecords || paymentRecords.length === 0) {
+      return res.status(404).json({ message: 'No se han encontrado pagos registrados'});
+    }
+
+    res.status(200).json({
+      status: 200,
+      message: "Exitoso",
+      paymentRecords,
+    });
+  } catch (error) {
+    console.error('Error al consultar registros de pago:', error);
+    return res.status(500).json({ message: 'Hubo un error al procesar la solicitud' });
+  }
+}
+
+module.exports = { getPaymentRecords, getPaymentRecordsUser, createPaymentRecord, approvePayment, deletePayment };
