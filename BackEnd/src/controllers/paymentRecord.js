@@ -38,11 +38,11 @@ const approvePayment = async (req, res) => {
     const paymentRecord = await PaymentRecord.findById(id);
 
     if (!paymentRecord) {
-      return res.status(404).json({ message: 'Pago no encontrado'});
+      return res.status(404).json({ message: 'Pago no encontrado' });
     }
-    
+
     const event = await Event.findById(paymentRecord.event);
-    
+
     //Verificar que si exista ese evento
     if (!event) {
       return res.status(404).json({ message: 'Evento asociado al pago no encontrado' });
@@ -81,7 +81,7 @@ const deletePayment = async (req, res) => {
     const paymentDeleted = await PaymentRecord.findByIdAndDelete(id);
 
     if (!paymentDeleted) {
-      return res.status(404).json({ message: 'Pago a eliminar no encontrado'});
+      return res.status(404).json({ message: 'Pago a eliminar no encontrado' });
     }
     res.status(200).json({
       status: 200,
@@ -101,7 +101,7 @@ const getPaymentRecords = async (req, res) => {
       .populate('user', 'name email');
 
     if (!paymentRecords || paymentRecords.length === 0) {
-      return res.status(404).json({ message: 'No se han encontrado pagos registrados'});
+      return res.status(404).json({ message: 'No se han encontrado pagos registrados' });
     }
 
     res.status(200).json({
@@ -123,7 +123,7 @@ const getPaymentRecordsUser = async (req, res) => {
       .populate('user', 'name email');
 
     if (!paymentRecords || paymentRecords.length === 0) {
-      return res.status(404).json({ message: 'No se han encontrado pagos registrados'});
+      return res.status(404).json({ message: 'No se han encontrado pagos registrados' });
     }
 
     res.status(200).json({

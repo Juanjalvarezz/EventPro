@@ -40,8 +40,8 @@ const EventCard = ({ events, userRole }) => {
                   </p>
                   <p
                     className={`ml-2 ${event.status === "Disponible"
-                        ? "text-green-700"
-                        : "text-amber-500"
+                      ? "text-green-700"
+                      : "text-amber-500"
                       } text-sm sm:text-lg md:text-lg lg:text-xl`}
                   >
                     {event.status}
@@ -61,26 +61,35 @@ const EventCard = ({ events, userRole }) => {
             </div>
           </div>
           <div className="flex justify-center items-center p-2 gap-3 w-full">
-            {userRole === "admin" ? (
+            {event.totalSales ? (
               <>
-                <UpdateButton event={event} />
-                <DeleteButton event={event} />
+                <p className='font-bold'>Boletos vendidos: {event.totalSales}</p>
               </>
             ) : (
-              <button
-                type="button"
-                className="bg-blue-500 rounded-xl p-4 sm:text-xl md:text-lg lg:text-xl"
-                onClick={() =>
-                  navigate("/pagos", { state: { boleto: event } })
-                }
-              >
-                Comprar Boleto
-              </button>
+              <>
+                {userRole === "admin" ? (
+                  <>
+                    <UpdateButton event={event} />
+                    <DeleteButton event={event} />
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className="bg-blue-500 rounded-xl p-4 sm:text-xl md:text-lg lg:text-xl"
+                    onClick={() =>
+                      navigate("/pagos", { state: { boleto: event } })
+                    }
+                  >
+                    Comprar Boleto
+                  </button>
+                )}
+              </>
             )}
           </div>
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 };
 

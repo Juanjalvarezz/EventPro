@@ -20,6 +20,11 @@ export const getEventsStatus = (status) => {
   return res;
 }
 
+export const getEventsSold = () => {
+  const res = axios.get(`/events/sold/`);
+  return res;
+}
+
 export const deleteEvent = (id) => {
   const res = axios.delete(`/events/delete/${id}`);
   return res;

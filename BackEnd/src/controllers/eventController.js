@@ -1,5 +1,6 @@
 const Event = require('../models/eventModel');
 const User = require('../models/userModel');
+const PaymentRecord = require('../models/paymentRecordModel.js');
 
 const createEvent = async (req, res) => {
   try {
@@ -144,7 +145,58 @@ const getEventsStatus = async (req, res) => {
     console.log(error);
     res.status(500).json({ message: "Error del servidor al buscar eventos" });
   }
-}
+};
+
+const getEventsWithSalesInfo = async (req, res) => {
+  try {
+    // Obtener los IDs de eventos con al menos un ticket vendido
+    const eventsWithSales = await PaymentRecord.distinct('event', { event: { $ne: null } });
+
+    // Buscar los eventos que tienen tickets vendidos
+    const events = await Event.find({ _id: { $in: eventsWithSales }, status: 'Disponible' });
+
+    const eventsInfoSales = [];
+
+    for (const event of events) {
+      // Calcular la cantidad de tickets vendidos para este evento
+      const ticketsSold = await PaymentRecord.countDocuments({ event: event._id });
+
+      // Calcular el total de ventas recibidas para este evento
+      const totalSales = await PaymentRecord.aggregate([
+        { $match: { event: event._id } },
+        { $group: { _id: null, totalAmount: { $sum: '$amount' } } }
+      ]);
+
+      const eventWithSalesInfo = {
+        _id: event._id,
+        name: event.name,
+        date: event.date,
+        place: event.place,
+        description: event.description,
+        image: event.image,
+        status: event.status,
+        promotorID: event.promotorID,
+        tickets: event.tickets,
+        ticketsSold: ticketsSold,
+        totalSales: totalSales.length > 0 ? totalSales[0].totalAmount : 0
+      };
+
+      // Agregar el evento con información de ventas al array
+      eventsInfoSales.push(eventWithSalesInfo);
+    }
+
+    // Devolver los eventos con información de ventas
+    res.status(200).json({
+      status: 200,
+      message: "Eventos con información de ventas obtenidos exitosamente",
+      events: eventsInfoSales
+    });
+  } catch (error) {
+    console.error('Error al obtener eventos con información de ventas:', error);
+    return res.status(500).json({ message: 'Hubo un error al procesar la solicitud' });
+  }
+};
+
 
 const getAllEvents = async (req, res) => {
   try {
@@ -165,4 +217,4 @@ const getAllEvents = async (req, res) => {
   }
 }
 
-module.exports = { createEvent, updateEvent, getAllEvents, getEventsByPromotorIdStatus, getEventsStatus, deleteEvent };
+module.exports = { createEvent, updateEvent, getAllEvents, getEventsByPromotorIdStatus, getEventsStatus, getEventsWithSalesInfo, deleteEvent };
